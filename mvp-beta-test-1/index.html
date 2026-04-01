@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certification périodique – Configurateur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1>🧠 Construisez votre certification périodique</h1>
+    <p>
+      Sélectionnez votre profession, puis composez votre parcours comme un panier :
+      formations, EPP, gestion des risques… L’outil vous guide en temps réel pour valider vos obligations sur 6 ans.
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="left">
+
+      <div class="card">
+        <h2>1. Choisissez votre profession</h2>
+        <div id="professionGrid" class="profession-grid"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <h2>Informations</h2>
+          <span id="professionHeadline" class="muted"></span>
+        </div>
+
+        <div id="metaGrid" class="meta-grid"></div>
+        <p id="professionNote" class="note"></p>
+      </div>
+
+      <div id="blocksContainer"></div>
+    </section>
+
+    <aside class="right">
+      <div id="cartCard" class="cart-card pending">
+        <div class="cart-header">
+          <h2>🛒 Votre parcours</h2>
+          <span id="statusBadge" class="status-badge">À démarrer</span>
+        </div>
+
+        <p id="cartSubtitle" class="cart-subtitle">
+          Suivez votre progression en temps réel
+        </p>
+
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div id="progressBar" class="progress-fill"></div>
+          </div>
+          <div id="progressText" class="progress-text">Sélectionnez une profession</div>
+        </div>
+
+        <div id="cartBlocks" class="cart-blocks"></div>
+
+        <div class="checklist">
+          <h3>✔️ Validation</h3>
+          <div id="checklist"></div>
+        </div>
+
+        <button id="resetBtn" class="reset-btn">🔄 Réinitialiser</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="data/professions.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

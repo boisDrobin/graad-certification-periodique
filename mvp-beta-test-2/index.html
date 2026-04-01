@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certification Périodique</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  <main class="app">
+    <header class="hero">
+      <div class="hero__badge">Mini site interactif</div>
+      <div class="hero__icon" id="heroIcon">🩺</div>
+      <h1 class="hero__title" id="pageTitle">Certification Périodique</h1>
+      <p class="hero__subtitle" id="pageSubtitle">
+        Sélectionnez votre profession puis votre fonction / spécialité pour afficher le bon référentiel.
+      </p>
+    </header>
+
+    <section class="card step-card">
+      <div class="step-card__head">
+        <span class="step-number">Étape 1</span>
+        <h2>Vous êtes ?</h2>
+      </div>
+
+      <div class="selectors">
+        <div class="field">
+          <label for="professionSelect">Profession</label>
+          <select id="professionSelect">
+            <option value="">-- Choisir --</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="specialitySelect">Fonction / spécialité</label>
+          <select id="specialitySelect" disabled>
+            <option value="">-- Choisir d'abord une profession --</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="card step-card hidden" id="blocksSection">
+      <div class="step-card__head">
+        <span class="step-number">Étape 2</span>
+        <h2>Où en êtes-vous dans vos blocs ?</h2>
+      </div>
+
+      <div class="global-progress">
+        <div class="global-progress__top">
+          <div class="global-progress__text">
+            <strong id="globalValidated">0</strong>/<span id="globalTotalBlocks">0</span> blocs validés
+          </div>
+
+          <button id="expandAllBtn" class="btn btn--ghost" type="button">
+            Ouvrir / fermer toutes les cartes
+          </button>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-bar__fill" id="globalProgressFill"></div>
+        </div>
+      </div>
+
+      <div class="blocks-grid" id="blocksGrid"></div>
+    </section>
+
+    <section class="card result-card hidden" id="resultSection">
+      <div class="step-card__head">
+        <span class="step-number">Étape 3</span>
+        <h2>Résultat</h2>
+      </div>
+
+      <div id="resultBox" class="result-box">
+        <h3 id="resultTitle">Votre résultat</h3>
+        <p id="resultText"></p>
+      </div>
+
+      <div class="summary-grid" id="summaryGrid"></div>
+
+      <div class="result-actions">
+        <button id="resetChecksBtn" class="btn btn--secondary" type="button">
+          Réinitialiser les cases cochées
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Données -->
+  <script src="data/core.js"></script>
+  <script src="data/dentistes.js"></script>
+ <script src="data/medecins.js"></script>
+ <script src="data/sages-femmes.js"></script>
+ <script src="data/kines.js"></script>
+ <script src="data/podologues.js"></script>
+ <script src="data/infirmiers.js"></script>
+  <!-- Moteur -->
+  <script src="script.js"></script>
+</body>
+</html>

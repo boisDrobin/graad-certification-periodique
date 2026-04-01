@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notre catalogue actuel</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #0f766e;
+      --primary-soft: #ccfbf1;
+      --danger-soft: #fee2e2;
+      --danger-text: #b91c1c;
+      --ok-soft: #dcfce7;
+      --ok-text: #166534;
+      --idea-soft: #f3e8ff;
+      --idea-text: #6b21a8;
+      --idea-border: #d8b4fe;
+      --b1: #dbeafe;
+      --b2: #fce7f3;
+      --b3: #dcfce7;
+      --b4: #fef3c7;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: #0f172a;
+      color: white;
+      padding: 24px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar h1 {
+      font-size: 1.5rem;
+      margin: 0 0 8px;
+    }
+
+    .sidebar p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .search {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      outline: none;
+      margin-bottom: 18px;
+    }
+
+    .search::placeholder { color: rgba(255,255,255,0.55); }
+
+    .group-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+      margin: 22px 0 10px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      text-align: left;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.09);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .content {
+      padding: 32px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    .meta,
+    .summary-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .requirement-box {
+      margin-top: 18px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: #1e3a8a;
+      line-height: 1.5;
+    }
+
+    .requirement-box strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .summary-pill {
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-pill.ok {
+      background: var(--ok-soft);
+      color: var(--ok-text);
+      border-color: #86efac;
+    }
+
+    .summary-pill.missing {
+      background: var(--danger-soft);
+      color: var(--danger-text);
+      border-color: #fca5a5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+    }
+
+    .block-card.block-1 { background: linear-gradient(180deg, var(--b1), #fff); }
+    .block-card.block-2 { background: linear-gradient(180deg, var(--b2), #fff); }
+    .block-card.block-3 { background: linear-gradient(180deg, var(--b3), #fff); }
+    .block-card.block-4 { background: linear-gradient(180deg, var(--b4), #fff); }
+
+    .block-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .block-card .label,
+    .idea-card .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #334155;
+    }
+
+    .counter {
+      min-width: 120px;
+      text-align: right;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .counter.ok {
+      color: var(--ok-text);
+      background: var(--ok-soft);
+      border-color: #86efac;
+    }
+
+    .counter.missing {
+      color: var(--danger-text);
+      background: var(--danger-soft);
+      border-color: #fca5a5;
+    }
+
+    .mini-status {
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .mini-status strong.ok { color: var(--ok-text); }
+    .mini-status strong.missing { color: var(--danger-text); }
+
+    .note {
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      color: #9a3412;
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .idea-card {
+      background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+      border: 1px solid var(--idea-border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+
+    .idea-card h3 {
+      margin: 8px 0 10px;
+      color: var(--idea-text);
+      font-size: 1.15rem;
+    }
+
+    .idea-headline {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .idea-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .idea-item {
+      background: white;
+      border: 1px solid #eadcff;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .idea-item p {
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+
+    .idea-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    .idea-title {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .empty {
+      background: white;
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+      }
+      .grid,
+      .idea-list { grid-template-columns: 1fr; }
+      .content { padding: 20px; }
+      .block-card .top {
+        flex-direction: column;
+      }
+      .counter {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1>Notre catalogue actuel</h1>
+      <p>Affichage simple par profession ou spécialité, avec les blocs de certification que votre catalogue peut couvrir aujourd’hui.</p>
+      <input id="search" class="search" type="text" placeholder="Rechercher une profession..." />
+
+      <div class="group-title">Professions / spécialités</div>
+      <div id="nav" class="nav-list"></div>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <h2 id="title">Sélectionnez une profession</h2>
+        <p id="description">Cliquez sur une profession ou une spécialité à gauche pour voir quels éléments de votre catalogue actuel peuvent raisonnablement entrer dans le bloc 1, le bloc 2, le bloc 3 ou le bloc 4.</p>
+        <div class="meta" id="meta"></div>
+        <div class="requirement-box" id="requirementBox">
+          <strong>Rappel du minimum attendu</strong>
+          Pour la plupart des professions et spécialités, il faut disposer d’au moins <strong>2 actions par bloc</strong>. Pour les sages-femmes, la logique est présentée en <strong>axes</strong> plutôt qu’en actions.
+        </div>
+        <div class="summary-bar" id="summaryBar"></div>
+      </section>
+
+      <div id="details" class="empty">
+        Sélectionnez une profession dans la colonne de gauche.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const data = [
+      {
+        name: "Médecins généralistes",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "En pratique, votre catalogue couvre surtout les blocs 1 et 2.",
+        description: "Formations IA, obésité, contraception, toxicomanie, ECG, vignettes cliniques et audits cliniques.",
+        blocks: {
+          1: [
+            "Lecture et interprétation clinique de l’ECG en médecine générale",
+            "L’IA en médecine : enjeux légaux, risques et utilisation au quotidien",
+            "Prise en charge de l’obésité chez l’enfant et l’adolescent",
+            "Consultation de contraception et prévention en santé sexuelle",
+            "Toxicomanie : repérage et accompagnement du patient"
+          ],
+          2: [
+            "L’IA en médecine – audit clinique",
+            "Contraception comme prévention en santé sexuelle – audit clinique",
+            "Diagnostic des IST fréquentes / atypiques – vignettes cliniques",
+            "Diagnostic des éruptions fébriles courantes / atypiques – vignettes cliniques",
+            "Détection précoce des mélanomes – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Rien de clairement formulé aujourd’hui pour les blocs 3 et 4."
+        },
+        ideas: {
+          headline: "Deux pistes très concrètes pour construire une offre bloc 3 et bloc 4 rapidement, avec des sujets transverses, faciles à produire et facilement déclinables.",
+          items: [
+            {
+              title: "💡 Idée : “Gérer un patient opposant ou agressif”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facile à produire"
+            },
+            {
+              title: "💡 Idée : “Annoncer un diagnostic difficile en médecine générale”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très demandée"
+            },
+            {
+              title: "💡 Idée : “Prévenir le burnout du médecin généraliste”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 forte demande"
+            },
+            {
+              title: "💡 Idée : “Optimiser l’organisation de son cabinet et réduire la charge mentale”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / CPF / autofinancement)",
+              value: "🎯 très concret"
+            }
+          ]
+        }
+      },
+      {
+        name: "Pédiatres",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue solide en bloc 1 et bloc 2.",
+        description: "Pédiatrie infectieuse, coqueluche, croissance, éruptions fébriles, IA en médecine.",
+        blocks: {
+          1: [
+            "Diagnostic et prise en charge des maladies infectieuses pédiatriques rencontrées en zones tropicales",
+            "La coqueluche chez le nourrisson : diagnostic et prise en charge",
+            "L’IA en médecine : enjeux légaux, risques et utilisation au quotidien"
+          ],
+          2: [
+            "Diagnostic des éruptions fébriles courantes / atypiques – vignettes cliniques",
+            "Intégrer la croissance dans le raisonnement clinique – vignettes cliniques",
+            "La coqueluche chez le nourrisson – audit clinique",
+            "Prise en charge de l’obésité chez l’enfant et l’adolescent – audit clinique",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Le catalogue actuel ne propose pas de thématique explicitement relation patient ou santé du professionnel pour les pédiatres."
+        },
+        ideas: {
+          headline: "Les manques portent surtout sur la relation avec les parents et sur la charge émotionnelle du praticien. Ce sont deux familles d’actions très cohérentes pour enrichir votre catalogue.",
+          items: [
+            {
+              title: "💡 Idée : “Gérer les parents anxieux en consultation”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 applicable immédiatement"
+            },
+            {
+              title: "💡 Idée : “Convaincre face à un refus vaccinal”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très stratégique"
+            },
+            {
+              title: "💡 Idée : “Gérer la charge émotionnelle en pédiatrie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            },
+            {
+              title: "💡 Idée : “Gérer les situations pédiatriques critiques sans stress”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 premium"
+            }
+          ]
+        }
+      },
+      {
+        name: "Psychiatres",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue surtout bloc 1 et bloc 2, avec une petite proximité bloc 3 sur certaines thématiques d’accompagnement.",
+        description: "Dépression du sujet âgé, post-partum, chemsex, IA en psychiatrie.",
+        blocks: {
+          1: [
+            "Diagnostic et prise en charge de la dépression du sujet âgé",
+            "Prise en charge et suivi de la dépression du post-partum",
+            "Utilisation de l’IA en psychiatrie",
+            "Chemsex : repérage et accompagnement des patients",
+            "L’IA en médecine : enjeux légaux, risques et utilisation au quotidien"
+          ],
+          2: [
+            "Utilisation de l’IA en psychiatrie – audit clinique",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [
+            "Chemsex : repérage et accompagnement des patients (potentiel bloc 3 selon positionnement pédagogique)"
+          ],
+          4: [],
+          note: "Pour sécuriser un vrai bloc 3, il faudrait des actions explicitement centrées relation patient, annonce, droits, expérience patient ou usagers."
+        },
+        ideas: {
+          headline: "La priorité est de consolider le bloc 3 puis d’ouvrir un vrai axe bloc 4 centré sur la protection émotionnelle du praticien. Ce sont des sujets cohérents avec la spécialité et différenciants commercialement.",
+          items: [
+            {
+              title: "💡 Idée : “Maintenir l’alliance thérapeutique avec un patient difficile”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 cœur de métier"
+            },
+            {
+              title: "💡 Idée : “Gérer un refus de traitement”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 cas fréquent"
+            },
+            {
+              title: "💡 Idée : “Prévenir l’épuisement émotionnel du psychiatre”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 très pertinent"
+            },
+            {
+              title: "💡 Idée : “Se protéger face aux situations psychiques lourdes”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 différenciant"
+            }
+          ]
+        }
+      },
+      {
+        name: "Médecins cardiovasculaires / Cardiologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Très bon niveau de couverture des blocs 1 et 2.",
+        description: "Risque cardiovasculaire, HTA, insuffisance cardiaque, IA en médecine.",
+        blocks: {
+          1: [
+            "Repérage et prise en charge du risque cardio-vasculaire – formation continue",
+            "Prise en charge du patient hypertendu et de son risque cardiovasculaire – formation continue",
+            "L’IA en médecine – formation continue"
+          ],
+          2: [
+            "Repérage et prise en charge du risque cardio-vasculaire – audit clinique",
+            "Prise en charge du patient hypertendu et de son risque cardiovasculaire – audit clinique",
+            "Prise en charge médicamenteuse de l’insuffisance cardiaque chez le sujet âgé – audit clinique",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Aucune action clairement fléchée bloc 3 ou bloc 4 dans le catalogue actuel."
+        },
+        ideas: {
+          headline: "Le bloc 3 peut être renforcé autour de l’observance et de l’annonce de pathologies chroniques. Le bloc 4 peut être abordé via la charge décisionnelle et le stress des situations aiguës.",
+          items: [
+            {
+              title: "💡 Idée : “Améliorer l’observance des traitements cardiovasculaires”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 impact direct"
+            },
+            {
+              title: "💡 Idée : “Annoncer une pathologie cardiovasculaire chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 fréquent"
+            },
+            {
+              title: "💡 Idée : “Gérer la fatigue décisionnelle en cardiologie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 niche intéressante"
+            },
+            {
+              title: "💡 Idée : “Gérer le stress en situation d’urgence cardiaque”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 forte valeur"
+            }
+          ]
+        }
+      },
+      {
+        name: "Gynécologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Couverture majoritairement bloc 1 et bloc 2.",
+        description: "Ménopause, prolapsus, incontinence, IA en médecine.",
+        blocks: {
+          1: [
+            "Prise en charge de l’incontinence urinaire féminine et du prolapsus – formation continue",
+            "L’IA en médecine – formation continue",
+            "Détection précoce des mélanomes chez les jeunes patients adultes – formation continue"
+          ],
+          2: [
+            "Prise en charge de l’incontinence urinaire féminine et du prolapsus – audit clinique",
+            "Diagnostic et prise en charge de la ménopause – audit clinique",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Le contenu touche parfois des situations relationnelles, mais les intitulés restent davantage orientés formation ou audit."
+        },
+        ideas: {
+          headline: "Les manques se prêtent bien à des contenus centrés sur la consultation sensible et sur la prévention de l’usure émotionnelle. Cela peut produire une offre utile et différenciante.",
+          items: [
+            {
+              title: "💡 Idée : “Consultation sexualité : mieux communiquer sur les sujets sensibles”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très utile terrain"
+            },
+            {
+              title: "💡 Idée : “Infertilité : annoncer et accompagner avec tact”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 sujet sensible"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue émotionnelle en gynécologie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            },
+            {
+              title: "💡 Idée : “Prévenir la surcharge mentale en consultation répétitive”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 simple à produire"
+            }
+          ]
+        }
+      },
+      {
+        name: "Anesthésistes",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue riche sur les blocs 1 et 2, notamment grâce aux programmes intégrés.",
+        description: "Ambulatoire, pré-éclampsie sévère, patient âgé, IA en médecine.",
+        blocks: {
+          1: [
+            "Anesthésie et analgésie du patient en chirurgie ambulatoire – formation continue",
+            "Prise en charge de la patiente avec une pré-éclampsie sévère – formation continue",
+            "L’IA en médecine – formation continue"
+          ],
+          2: [
+            "Anesthésie et analgésie du patient en chirurgie ambulatoire – audit clinique",
+            "Prise en charge de la patiente avec une pré-éclampsie sévère – audit clinique",
+            "Anesthésie et analgésie du patient en chirurgie ambulatoire – programme intégré",
+            "Prise en charge du patient âgé en périopératoire d’une chirurgie majeure – programme intégré",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Les programmes intégrés sont un vrai atout pour le bloc 2. Rien de nettement fléché bloc 4 aujourd’hui."
+        },
+        ideas: {
+          headline: "Ici, le potentiel principal est de compléter les blocs 3 et 4 avec des actions très opérationnelles, courtes et faciles à intégrer dans une offre anesthésie déjà solide sur les blocs 1 et 2.",
+          items: [
+            {
+              title: "💡 Idée : “Rassurer un patient avant anesthésie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facile à produire"
+            },
+            {
+              title: "💡 Idée : “Améliorer la communication pré-opératoire avec le patient anxieux”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très cohérent"
+            },
+            {
+              title: "💡 Idée : “Gérer la fatigue et maintenir la vigilance en anesthésie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 angle sécurité patient fort"
+            },
+            {
+              title: "💡 Idée : “Prévenir l’usure liée aux gardes et à la charge mentale”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 complément utile"
+            }
+          ]
+        }
+      },
+      {
+        name: "Radiologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Très bonne base sur bloc 1 et bloc 2.",
+        description: "IRM mammaire, IA, maîtrise des risques, innovations radiologiques.",
+        blocks: {
+          1: [
+            "IRM mammaire et dépistage du cancer du sein : bonnes pratiques en radiologie – formation continue",
+            "Apports spécifiques de l’IA : bonnes pratiques en radiologie – formation continue",
+            "L’IA en médecine – formation continue"
+          ],
+          2: [
+            "IRM mammaire et dépistage du cancer du sein – audit clinique",
+            "Maîtrise des risques associés en radiologie – programme intégré",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Très peu de matière bloc 3 et rien de clair pour le bloc 4."
+        },
+        ideas: {
+          headline: "Les blocs manquants peuvent être remplis avec une logique simple : relation patient autour de l’annonce et bloc 4 autour de la fatigue visuelle et cognitive.",
+          items: [
+            {
+              title: "💡 Idée : “Annoncer indirectement un résultat grave en imagerie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 sujet réel"
+            },
+            {
+              title: "💡 Idée : “Mieux interagir avec un patient anxieux avant ou après l’examen”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue courte",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 simple à produire"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue visuelle du radiologue”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 rapide à lancer"
+            },
+            {
+              title: "💡 Idée : “Réduire la charge cognitive en lecture d’images répétitive”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            }
+          ]
+        }
+      },
+      {
+        name: "Ophtalmologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue très lisible en bloc 1 et bloc 2.",
+        description: "Amblyopie, cataracte, implants, anti-VEGF.",
+        blocks: {
+          1: [
+            "Dépistage et diagnostic des amblyopies chez les jeunes enfants – formation continue",
+            "Avancées et innovation des implants intraoculaires en chirurgie cristallinienne – formation continue",
+            "Indications et contre-indications de la chirurgie de la cataracte liée à l’âge – formation continue",
+            "Intégration des innovations dans la pratique médicale : les anti-VEGF – formation continue"
+          ],
+          2: [
+            "Dépistage et diagnostic des amblyopies chez les jeunes enfants – audit clinique",
+            "Indications et contre-indications de la chirurgie de la cataracte liée à l’âge – audit clinique",
+            "Avancées et innovation des implants intraoculaires – audit clinique",
+            "Anti-VEGF dans la pathologie rétinienne – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Le catalogue actuel n’identifie pas de bloc 3 ou bloc 4 clairement assumé."
+        },
+        ideas: {
+          headline: "L’ophtalmologie se prête bien à des contenus bloc 3 sur la pédagogie patient et à des contenus bloc 4 sur l’ergonomie et la fatigue visuelle du praticien.",
+          items: [
+            {
+              title: "💡 Idée : “Expliquer une perte de vision au patient avec pédagogie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très cohérent"
+            },
+            {
+              title: "💡 Idée : “Mieux faire accepter une pathologie ophtalmologique chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 utile en consultation"
+            },
+            {
+              title: "💡 Idée : “Optimiser l’ergonomie du poste en ophtalmologie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 concret"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue visuelle du praticien”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 rapide à produire"
+            }
+          ]
+        }
+      },
+      {
+        name: "Dermatologues et vénéréologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Bon duo bloc 1 / bloc 2.",
+        description: "Pemphigoïde, laser, lupus cutané, dermatite atopique, IA.",
+        blocks: {
+          1: [
+            "Pemphigoïde bulleuse – formation continue",
+            "Nouvelles indications du laser dans la prise en charge dermatologique – formation continue",
+            "L’IA en médecine – formation continue"
+          ],
+          2: [
+            "Pemphigoïde bulleuse – audit clinique",
+            "Nouvelles indications du laser – audit clinique",
+            "Lupus cutané : diagnostic et prise en charge – audit clinique",
+            "Dermatite atopique chez l’enfant et l’adulte – audit clinique",
+            "L’IA en médecine – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Rien de directement formulé pour la relation patient ou la santé du professionnel."
+        },
+        ideas: {
+          headline: "Les blocs manquants peuvent être comblés avec des sujets centrés sur l’impact psychologique des atteintes cutanées et sur la prévention de l’usure en consultation rapide.",
+          items: [
+            {
+              title: "💡 Idée : “Prendre en compte l’impact psychologique des maladies de peau”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très pertinent"
+            },
+            {
+              title: "💡 Idée : “Annoncer une dermatose chronique avec pédagogie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facile à produire"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue liée aux consultations rapides et répétitives”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 utile"
+            },
+            {
+              title: "💡 Idée : “Limiter la surcharge mentale en activité dermatologique dense”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            }
+          ]
+        }
+      },
+      {
+        name: "Neurologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Couverture minimale mais claire : bloc 1 et bloc 2 via l’IA en médecine.",
+        description: "Catalogue actuellement concentré sur la thématique IA.",
+        blocks: {
+          1: ["L’IA en médecine – formation continue"],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Offre encore limitée pour cette spécialité."
+        },
+        ideas: {
+          headline: "Le plus logique ici est d’enrichir l’offre autour de l’annonce et de l’accompagnement des maladies neurologiques chroniques, puis de compléter avec un axe santé du professionnel.",
+          items: [
+            {
+              title: "💡 Idée : “Annoncer une maladie neurologique chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 fort besoin terrain"
+            },
+            {
+              title: "💡 Idée : “Accompagner le patient sur le temps long en neurologie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très cohérent"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue du suivi long et complexe”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 simple à produire"
+            },
+            {
+              title: "💡 Idée : “Gérer la charge mentale de la décision neurologique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 différenciant"
+            }
+          ]
+        }
+      },
+      {
+        name: "Néphrologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Couverture minimale : bloc 1 et bloc 2.",
+        description: "Catalogue actuellement centré sur l’IA en médecine.",
+        blocks: {
+          1: ["L’IA en médecine – formation continue"],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Catalogue à compléter si vous souhaitez une vraie profondeur par spécialité."
+        },
+        ideas: {
+          headline: "La priorité est de développer une offre plus incarnée, centrée sur l’annonce de l’insuffisance rénale chronique et sur la prévention de l’usure liée au suivi long des patients.",
+          items: [
+            {
+              title: "💡 Idée : “Annoncer une insuffisance rénale chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très pertinent"
+            },
+            {
+              title: "💡 Idée : “Mieux accompagner le patient dans la durée en néphrologie”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 utile"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue liée au suivi chronique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 simple à lancer"
+            },
+            {
+              title: "💡 Idée : “Réduire la charge mentale des décisions néphrologiques complexes”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 différenciant"
+            }
+          ]
+        }
+      },
+      {
+        name: "Médecine interne",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Couverture actuelle essentiellement sur l’IA en médecine.",
+        description: "Positionnement surtout bloc 1 et bloc 2.",
+        blocks: {
+          1: ["L’IA en médecine – formation continue"],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Pas de bloc 3 ni bloc 4 identifiés dans le catalogue actuel."
+        },
+        ideas: {
+          headline: "La médecine interne se prête bien à une offre bloc 3 sur l’accompagnement des maladies complexes et à une offre bloc 4 sur la charge mentale diagnostique.",
+          items: [
+            {
+              title: "💡 Idée : “Accompagner l’annonce d’une maladie systémique ou rare”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très cohérent"
+            },
+            {
+              title: "💡 Idée : “Mieux communiquer dans le suivi de patients complexes”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 utile terrain"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue liée à la complexité diagnostique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 angle différenciant"
+            },
+            {
+              title: "💡 Idée : “Réduire la charge mentale de la coordination pluripathologique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 spécifique à la spécialité"
+            }
+          ]
+        }
+      },
+      {
+        name: "Hépato-gastro-entérologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Bloc 1 et bloc 2 principalement.",
+        description: "MICI pédiatriques et IA en médecine.",
+        blocks: {
+          1: [
+            "Maladies inflammatoires chroniques intestinales pédiatriques – formation continue",
+            "L’IA en médecine – formation continue"
+          ],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Couverture partielle de la spécialité pour l’instant."
+        },
+        ideas: {
+          headline: "Le plus naturel est de compléter le catalogue avec des actions relation patient liées aux maladies chroniques digestives et des actions bloc 4 centrées sur l’usure décisionnelle.",
+          items: [
+            {
+              title: "💡 Idée : “Annoncer et expliquer une MICI chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très cohérent"
+            },
+            {
+              title: "💡 Idée : “Améliorer l’adhésion du patient au suivi long en hépato-gastro”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 utile"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue liée aux décisions thérapeutiques complexes”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            },
+            {
+              title: "💡 Idée : “Gérer la charge mentale des suivis digestifs chroniques”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 spécialité compatible"
+            }
+          ]
+        }
+      },
+      {
+        name: "Allergologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Offre actuelle surtout IA en médecine, positionnée sur bloc 1 et bloc 2.",
+        description: "Catalogue encore resserré pour cette spécialité.",
+        blocks: {
+          1: ["L’IA en médecine – formation continue"],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Pour les allergologues, cela ne suffira pas à construire un parcours complet."
+        },
+        ideas: {
+          headline: "Le potentiel est de bâtir rapidement une base bloc 3 autour de l’explication des allergies et une base bloc 4 autour de la prévention de l’usure professionnelle.",
+          items: [
+            {
+              title: "💡 Idée : “Expliquer une allergie sévère et les conduites à tenir au patient”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très terrain"
+            },
+            {
+              title: "💡 Idée : “Mieux accompagner l’éducation du patient allergique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 simple à produire"
+            },
+            {
+              title: "💡 Idée : “Prévenir l’usure du suivi répétitif en allergologie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 complément utile"
+            },
+            {
+              title: "💡 Idée : “Mieux gérer la charge mentale liée aux situations à risque”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 angle sécurité"
+            }
+          ]
+        }
+      },
+      {
+        name: "Rhumatologues",
+        category: "Médecins",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Offre ciblée mais limitée.",
+        description: "Thématique IA en médecine seulement dans le catalogue actuel.",
+        blocks: {
+          1: ["L’IA en médecine – formation continue"],
+          2: ["L’IA en médecine – audit clinique"],
+          3: [],
+          4: [],
+          note: "Bloc 1 et 2 seulement à ce stade."
+        },
+        ideas: {
+          headline: "Pour cette spécialité, les gains les plus rapides sont sur la relation patient autour de la douleur chronique et sur la prévention de la fatigue professionnelle.",
+          items: [
+            {
+              title: "💡 Idée : “Expliquer la douleur chronique et améliorer l’adhésion du patient”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 cohérent"
+            },
+            {
+              title: "💡 Idée : “Mieux communiquer face à un patient douloureux chronique”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facilement vendable"
+            },
+            {
+              title: "💡 Idée : “Prévenir l’usure liée au suivi chronique en rhumatologie”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 rapide à lancer"
+            },
+            {
+              title: "💡 Idée : “Réduire la charge mentale en consultation longue et répétée”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC possible",
+              value: "🎯 utile"
+            }
+          ]
+        }
+      },
+      {
+        name: "Chirurgiens-dentistes",
+        category: "Professions de santé",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue cohérent sur bloc 1 et bloc 2.",
+        description: "Parodontologie, numérique, radioprotection, CBCT.",
+        blocks: {
+          1: [
+            "Radioprotection du patient en chirurgie dentaire – formation continue",
+            "Numérique et odontologie – formation continue",
+            "Maladies parodontales : diagnostic et prise en charge – formation continue"
+          ],
+          2: [
+            "CBCT : maîtriser l’indication, l’analyse et la réglementation du cone beam – audit clinique",
+            "Numérique et odontologie – audit clinique",
+            "Maladies parodontales : diagnostic et prise en charge – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Rien de clairement fléché relation patient ou santé du professionnel."
+        },
+        ideas: {
+          headline: "C’est une profession idéale pour développer une offre bloc 3 autour de la peur et de la douleur, et une offre bloc 4 autour des TMS et de l’ergonomie au cabinet.",
+          items: [
+            {
+              title: "💡 Idée : “Gérer la peur du dentiste chez le patient”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 ultra pertinent"
+            },
+            {
+              title: "💡 Idée : “Mieux gérer la douleur et l’anxiété au fauteuil”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 concret"
+            },
+            {
+              title: "💡 Idée : “Prévenir les TMS chez le chirurgien-dentiste”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 énorme demande"
+            },
+            {
+              title: "💡 Idée : “Optimiser sa posture et son ergonomie au cabinet”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facile à produire"
+            }
+          ]
+        }
+      },
+      {
+        name: "Infirmiers",
+        category: "Professions de santé",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Très bon volume sur bloc 1 et bloc 2.",
+        description: "Infections, autonomie des seniors, perfusion, endométriose, plaies, douleur, risque cardio-vasculaire.",
+        blocks: {
+          1: [
+            "Prévention des infections et de l’antibiorésistance en soins infirmiers – formation continue",
+            "Outils numériques pour soutenir l’autonomie des séniors à domicile – formation continue",
+            "Prise en charge non médicamenteuse des troubles du comportement du patient dément – formation continue",
+            "Prise en soin de l’endométriose par les infirmier(ère)s – formation continue",
+            "Repérage et prise en charge du risque cardio-vasculaire – formation continue"
+          ],
+          2: [
+            "Outils numériques pour soutenir l’autonomie des séniors à domicile – audit clinique",
+            "Repérage et prise en charge du risque cardiovasculaire chez les patients atteints de diabète de type 2 – audit clinique",
+            "Soins infirmiers et surveillance des patients sous perfusion – audit clinique",
+            "Prise en soin de l’endométriose – audit clinique",
+            "Plaies aiguës et chroniques / plaies complexes à domicile – vignettes cliniques"
+          ],
+          3: [
+            "Troubles du comportement du patient dément (proximité bloc 3 selon positionnement)",
+            "Autonomie des séniors à domicile (proximité bloc 3 selon positionnement)"
+          ],
+          4: [],
+          note: "Pour sécuriser un vrai bloc 3 ou bloc 4, il faudrait des actions davantage explicites sur la relation patient ou la santé du professionnel."
+        },
+        ideas: {
+          headline: "Le catalogue est déjà robuste sur les blocs 1 et 2. Les meilleures pistes sont maintenant de consolider le bloc 3 et d’ouvrir un vrai axe bloc 4 autour de l’épuisement infirmier.",
+          items: [
+            {
+              title: "💡 Idée : “Gérer un patient difficile à domicile”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 terrain réel"
+            },
+            {
+              title: "💡 Idée : “Faire face à un refus de soin”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 fréquent"
+            },
+            {
+              title: "💡 Idée : “Prévenir le burnout infirmier”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très demandé"
+            },
+            {
+              title: "💡 Idée : “Gérer la fatigue des tournées et la charge physique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 complémentaire"
+            }
+          ]
+        }
+      },
+      {
+        name: "Masseurs-kinésithérapeutes",
+        category: "Professions de santé",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue bien réparti entre bloc 1 et bloc 2.",
+        description: "Lombalgie, cervicalgie, endométriose, pubalgies, Parkinson, maintien de l’autonomie.",
+        blocks: {
+          1: [
+            "Douleur dans la lombalgie chronique – formation continue",
+            "Douleur dans la cervicalgie aiguë – formation continue",
+            "Endométriose : approche kinésithérapique – formation continue",
+            "Diagnostic et prise en charge des pubalgies chroniques – formation continue"
+          ],
+          2: [
+            "Maladie de Parkinson : rééducation des patients – audit clinique",
+            "Maintien de l’autonomie des séniors : approche kinésithérapique – audit clinique",
+            "Endométriose : approche kinésithérapique – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Très peu de matière explicite pour les blocs 3 et 4."
+        },
+        ideas: {
+          headline: "Les besoins complémentaires sont évidents : bloc 3 sur la motivation et l’observance, bloc 4 sur la prévention des blessures du praticien. Deux axes très naturels pour la profession.",
+          items: [
+            {
+              title: "💡 Idée : “Motiver un patient dans sa rééducation”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 essentiel"
+            },
+            {
+              title: "💡 Idée : “Améliorer l’observance des exercices à domicile”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 concret"
+            },
+            {
+              title: "💡 Idée : “Prévenir les blessures du kinésithérapeute”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très attendu"
+            },
+            {
+              title: "💡 Idée : “Prévenir les TMS liés à la pratique”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 indispensable"
+            }
+          ]
+        }
+      },
+      {
+        name: "Pédicures-podologues",
+        category: "Professions de santé",
+        requirementType: "actions",
+        minimumPerBlock: 2,
+        rule: "Catalogue lisible sur bloc 1 et bloc 2.",
+        description: "Douleurs podologiques, pied diabétique, podo-pédiatrie.",
+        blocks: {
+          1: [
+            "Diagnostic et prise en charge des douleurs podologiques chez la personne âgée – formation continue",
+            "Douleurs chroniques neuropathiques du pied diabétique – formation continue",
+            "Diagnostic et prise en charge des douleurs podo-pédiatriques – formation continue"
+          ],
+          2: [
+            "Diagnostic et prise en charge des douleurs podologiques chez la personne âgée – audit clinique",
+            "Douleurs chroniques neuropathiques du pied diabétique – audit clinique",
+            "Diagnostic et prise en charge des douleurs podo-pédiatriques – audit clinique"
+          ],
+          3: [],
+          4: [],
+          note: "Le catalogue actuel ne couvre pas vraiment bloc 3 ni bloc 4 pour les podologues."
+        },
+        ideas: {
+          headline: "La profession se prête bien à des contenus bloc 3 sur l’éducation du patient et à des contenus bloc 4 sur la posture et la fatigue liées aux gestes répétitifs.",
+          items: [
+            {
+              title: "💡 Idée : “Améliorer l’observance des semelles orthopédiques”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 concret"
+            },
+            {
+              title: "💡 Idée : “Éduquer un patient diabétique au soin du pied”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très pertinent"
+            },
+            {
+              title: "💡 Idée : “Prévenir les troubles musculosquelettiques du podologue”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 logique métier"
+            },
+            {
+              title: "💡 Idée : “Gérer la fatigue liée aux gestes répétitifs”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 complément utile"
+            }
+          ]
+        }
+      },
+      {
+        name: "Sages-femmes",
+        category: "Professions de santé",
+        requirementType: "axes",
+        minimumPerBlock: 2,
+        rule: "Chez les sages-femmes, la logique est en axes, mais votre catalogue visible correspond surtout au bloc 1.",
+        description: "Grossesse, prévention pré-conceptuelle, post-natal.",
+        blocks: {
+          1: [
+            "Suivi et prise en charge de la grossesse par la sage-femme – formation continue",
+            "Dépistage et prise en charge des facteurs de risque pré-conceptuel – formation continue",
+            "Accompagnement post-natal des grossesses et accouchements difficiles – formation continue"
+          ],
+          2: [],
+          3: [],
+          4: [],
+          note: "Dans votre catalogue fourni ici, je ne vois pas d’audit clinique sages-femmes ni d’actions explicites bloc 3 / bloc 4."
+        },
+        ideas: {
+          headline: "Les sages-femmes ont ici le plus gros potentiel d’enrichissement, avec des idées immédiatement actionnables sur le bloc 2, le bloc 3 et le bloc 4 pour mieux équilibrer l’offre.",
+          items: [
+            {
+              title: "💡 Idée : “Audit des pratiques de suivi de grossesse”",
+              block: "🧩 Bloc : 2",
+              format: "🧱 Format : EPP",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 facile à monter"
+            },
+            {
+              title: "💡 Idée : “Audit du suivi post-natal”",
+              block: "🧩 Bloc : 2",
+              format: "🧱 Format : EPP",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 standard"
+            },
+            {
+              title: "💡 Idée : “Annoncer une complication de grossesse”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 très sensible"
+            },
+            {
+              title: "💡 Idée : “Accompagner une IVG avec une communication adaptée”",
+              block: "🧩 Bloc : 3",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : ANDPC",
+              value: "🎯 fort impact"
+            },
+            {
+              title: "💡 Idée : “Gérer la charge émotionnelle du suivi périnatal”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 différenciant"
+            },
+            {
+              title: "💡 Idée : “Prévenir la fatigue liée aux gardes et astreintes”",
+              block: "🧩 Bloc : 4",
+              format: "🧱 Format : Formation continue",
+              funding: "🏛️ Dépôt / financement : Hors DPC (FIF-PL / autofinancement)",
+              value: "🎯 utile"
+            }
+          ]
+        }
+      }
+    ];
+
+    const nav = document.getElementById('nav');
+    const search = document.getElementById('search');
+    const titleEl = document.getElementById('title');
+    const descriptionEl = document.getElementById('description');
+    const metaEl = document.getElementById('meta');
+    const detailsEl = document.getElementById('details');
+    const summaryBarEl = document.getElementById('summaryBar');
+    const requirementBoxEl = document.getElementById('requirementBox');
+
+    let activeName = null;
+
+    function renderNav(filter = '') {
+      nav.innerHTML = '';
+      const filtered = data.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
+
+      if (!filtered.length) {
+        nav.innerHTML = '<div style="color: rgba(255,255,255,0.7); font-size: 0.92rem;">Aucun résultat</div>';
+        return;
+      }
+
+      filtered.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'nav-btn' + (item.name === activeName ? ' active' : '');
+        btn.textContent = item.name;
+        btn.onclick = () => selectProfession(item.name);
+        nav.appendChild(btn);
+      });
+    }
+
+    function getUnitLabel(item, count) {
+      const base = item.requirementType === 'axes' ? 'axe' : 'action';
+      return `${count} ${base}${count > 1 ? 's' : ''}`;
+    }
+
+    function getRequirementText(item) {
+      const unit = item.requirementType === 'axes' ? 'axes' : 'actions';
+      return `Minimum attendu : ${item.minimumPerBlock} ${unit} par bloc.`;
+    }
+
+    function getCounterClass(count, min) {
+      return count >= min ? 'ok' : 'missing';
+    }
+
+    function getShortStatus(item, count) {
+      if (count >= item.minimumPerBlock) {
+        return `<strong class="ok">Catalogue suffisant</strong> pour atteindre le minimum de ${item.minimumPerBlock} ${item.requirementType === 'axes' ? 'axes' : 'actions'}.`;
+      }
+      const missing = item.minimumPerBlock - count;
+      return `<strong class="missing">Il manque ${missing} ${item.requirementType === 'axes' ? (missing > 1 ? 'axes' : 'axe') : (missing > 1 ? 'actions' : 'action')}</strong> pour atteindre le minimum de ${item.minimumPerBlock}.`;
+    }
+
+    function blockCard(item, index, title, items, className) {
+      const count = items.length;
+      const counterClass = getCounterClass(count, item.minimumPerBlock);
+      const safeItems = count
+        ? `<ul>${items.map(entry => `<li>${entry}</li>`).join('')}</ul>`
+        : '<p class="note">Aucun élément clairement identifiable dans le catalogue actuel.</p>';
+
+      return `
+        <section class="card block-card ${className}">
+          <div class="top">
+            <div>
+              <div class="label">Bloc ${index}</div>
+              <h3>${title}</h3>
+            </div>
+            <div class="counter ${counterClass}">${getUnitLabel(item, count)} / minimum ${item.minimumPerBlock}</div>
+          </div>
+          <div class="mini-status">${getShortStatus(item, count)}</div>
+          ${safeItems}
+        </section>
+      `;
+    }
+
+    function renderIdeas(item) {
+      if (!item.ideas || !item.ideas.items || !item.ideas.items.length) return '';
+      return `
+        <section class="idea-card">
+          <div class="label">Veille / Idée</div>
+          <h3>Des pistes concrètes pour compléter les blocs manquants</h3>
+          <p class="idea-headline">${item.ideas.headline}</p>
+          <div class="idea-list">
+            ${item.ideas.items.map(idea => `
+              <div class="idea-item">
+                <p class="idea-title">${idea.title}</p>
+                <p>${idea.block}</p>
+                <p>${idea.format}</p>
+                <p>${idea.funding}</p>
+                <p>${idea.value}</p>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderSummary(item) {
+      const parts = [1, 2, 3, 4].map(blockNumber => {
+        const count = item.blocks[blockNumber].length;
+        const ok = count >= item.minimumPerBlock;
+        return `<span class="summary-pill ${ok ? 'ok' : 'missing'}">Bloc ${blockNumber} : ${getUnitLabel(item, count)}</span>`;
+      });
+      summaryBarEl.innerHTML = parts.join('');
+    }
+
+    function selectProfession(name) {
+      activeName = name;
+      const item = data.find(entry => entry.name === name);
+      if (!item) return;
+
+      renderNav(search.value);
+
+      titleEl.textContent = item.name;
+      descriptionEl.textContent = item.description;
+      metaEl.innerHTML = `
+        <span class="chip">${item.category}</span>
+        <span class="chip">${item.rule}</span>
+      `;
+
+      requirementBoxEl.innerHTML = `
+        <strong>Rappel du minimum attendu</strong>
+        ${getRequirementText(item)} ${item.requirementType === 'axes' ? 'Pour cette profession, la lecture se fait en axes plutôt qu’en actions.' : 'L’objectif ici est de visualiser immédiatement ce que votre catalogue couvre déjà et ce qu’il manque encore.'}
+      `;
+
+      renderSummary(item);
+
+      detailsEl.className = '';
+      detailsEl.innerHTML = `
+        <div class="grid">
+          ${blockCard(item, 1, 'Actualiser les connaissances et compétences', item.blocks[1], 'block-1')}
+          ${blockCard(item, 2, 'Renforcer la qualité des pratiques', item.blocks[2], 'block-2')}
+          ${blockCard(item, 3, 'Relation avec les patients', item.blocks[3], 'block-3')}
+          ${blockCard(item, 4, 'Santé du professionnel', item.blocks[4], 'block-4')}
+        </div>
+        <div class="warning"><strong>Point d’attention :</strong> ${item.blocks.note}</div>
+        ${renderIdeas(item)}
+      `;
+    }
+
+    search.addEventListener('input', (e) => {
+      renderNav(e.target.value);
+    });
+
+    renderNav();
+  </script>
+</body>
+</html>
