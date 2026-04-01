@@ -4518,23 +4518,61 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 3 actions différentes minimum dans ce bloc.",
-      requirements: { min: 3 },
+      ruleText: "Validation radiologie : 2 actions minimum dans ce bloc.",
+      requirements: { min: 2 },
       allReferentialActions: [
-        "DPC radiologie",
-        "Congrès de spécialité",
-        "Formation spécialisée",
-        "DU / DIU",
-        "Recherche",
-        "Publication"
+        "Action de formation au titre du DPC en radiologie et imagerie médicale",
+        "Action de formation spécialisée en imagerie médicale",
+        "Participation à un congrès ou une journée scientifique de radiologie",
+        "Formation ciblée par domaine d’imagerie : sénologie, tête et cou, musculo-squelettique, pédiatrie, vasculaire, oncologie, gynécologie, radiologie interventionnelle",
+        "Formation à de nouvelles pratiques : téléradiologie, intelligence artificielle, nouvelles techniques d’imagerie",
+        "Validation d’actions de formation dans le cadre d’une démarche d’accréditation",
+        "Formation diplômante ou certifiante retenue par le CNP",
+        "Activité d’enseignement universitaire",
+        "Participation à des cours spécialisés, DES, masters, DU/DIU",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "radio_b1_dpc", label: "Action DPC", hint: "Attestation de participation." },
-        { id: "radio_b1_congres", label: "Congrès de spécialité", hint: "Congrès ou journée scientifique." },
-        { id: "radio_b1_formation", label: "Formation spécialisée", hint: "Formation scientifique ou professionnelle." },
-        { id: "radio_b1_diplome", label: "Formation diplômante", hint: "DU, DIU ou équivalent." },
-        { id: "radio_b1_recherche", label: "Activité de recherche", hint: "Projet ou étude." },
-        { id: "radio_b1_publication", label: "Publication scientifique", hint: "Article ou contribution." }
+        {
+          id: "radio_b1_dpc",
+          label: "Action de formation DPC en radiologie",
+          hint: "Action relevant du DPC dans le champ de la radiologie et de l’imagerie médicale."
+        },
+        {
+          id: "radio_b1_formation_specialisee",
+          label: "Formation spécialisée en imagerie médicale",
+          hint: "Exemples visibles dans le référentiel : tomosynthèse, IRM mammaire, imagerie du sein traité, imagerie avec prothèse, imagerie des lombalgies, vomissements de l’enfant, radiologie interventionnelle, etc."
+        },
+        {
+          id: "radio_b1_congres",
+          label: "Congrès / journée scientifique de radiologie",
+          hint: "Participation à un congrès ou à une journée scientifique de la spécialité."
+        },
+        {
+          id: "radio_b1_nouvelles_pratiques",
+          label: "Nouvelles pratiques en radiologie",
+          hint: "Exemples visibles : téléradiologie, intelligence artificielle et radiologie."
+        },
+        {
+          id: "radio_b1_accreditation",
+          label: "Formation dans le cadre d’une démarche d’accréditation",
+          hint: "Action de formation réalisée dans le cadre de la complétion d’une démarche d’accréditation accompagnée par un OA, poursuivie pendant la période de 6 ans."
+        },
+        {
+          id: "radio_b1_du_diu",
+          label: "Formation diplômante ou certifiante retenue par le CNP",
+          hint: "Exemples visibles en annexe : DU Imagerie gynécologie et mammaire, DIU Imagerie sénologique, DIU Radiologie interventionnelle musculo-squelettique, DIU Neuroradiologie diagnostique et thérapeutique, DIU Imagerie neurovasculaire, DIU Imagerie cardiovasculaire, DIU Radio pédiatrie."
+        },
+        {
+          id: "radio_b1_enseignement",
+          label: "Activité d’enseignement universitaire",
+          hint: "Enseignements des 2e et 3e cycles, DES, masters, DU/DIU et cours en ligne mentionnés par le référentiel."
+        },
+        {
+          id: "radio_b1_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Une formation diplômante ne figurant pas dans la liste peut être soumise au CNPR pour validation."
+        }
       ]
     },
     {
@@ -4544,22 +4582,83 @@
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
+      ruleText: "Validation radiologie : 2 actions minimum dans ce bloc.",
       requirements: { min: 2 },
       allReferentialActions: [
-        "Audit clinique",
-        "EPP",
-        "Double lecture / revue de dossiers",
-        "Registre",
-        "Protocoles",
-        "Radioprotection / gestion des risques"
+        "Décision réglementaire ASN et utilisations médicales",
+        "Décision ASN : parcours intégral vers l’assurance qualité obligatoire",
+        "DACS : comment optimiser la dose patient",
+        "Sécurité informatique et dossier médical",
+        "Gestion du matériel dans un service d’imagerie",
+        "Urgences vitales en cabinet de radiologie",
+        "Gestes d’urgence en radiologie : prise en charge de l’allergie et de l’arrêt cardio-respiratoire",
+        "Santé et sécurité en IRM",
+        "Hygiène et prévention des infections en imagerie médicale",
+        "Gestion des produits de contraste",
+        "Participation à un registre de pratiques / observatoire / base de données",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "radio_b2_audit", label: "Audit clinique", hint: "Audit structuré." },
-        { id: "radio_b2_epp", label: "EPP / analyse de pratiques", hint: "Évaluation des pratiques." },
-        { id: "radio_b2_doublelecture", label: "Double lecture / revue de dossiers", hint: "Analyse collégiale des pratiques." },
-        { id: "radio_b2_registre", label: "Participation à un registre", hint: "Contribution active." },
-        { id: "radio_b2_radioprotection", label: "Radioprotection / gestion des risques", hint: "Prévention et sécurité des pratiques." }
+        {
+          id: "radio_b2_asn_utilisations",
+          label: "Décision réglementaire ASN et utilisations médicales",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_asn_assurance_qualite",
+          label: "Décision ASN : parcours intégral vers l’assurance qualité obligatoire",
+          hint: "Action relevant de l’analyse du parcours de soins."
+        },
+        {
+          id: "radio_b2_dacs_dose",
+          label: "DACS : comment optimiser la dose patient",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_securite_informatique",
+          label: "Sécurité informatique et dossier médical",
+          hint: "Action relevant de la gestion des risques."
+        },
+        {
+          id: "radio_b2_materiel",
+          label: "Gestion du matériel dans un service d’imagerie",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_urgences_vitales",
+          label: "Urgences vitales en cabinet de radiologie",
+          hint: "Action relevant de la gestion des risques."
+        },
+        {
+          id: "radio_b2_allergie_acr",
+          label: "Gestes d’urgence en radiologie : allergie et arrêt cardio-respiratoire",
+          hint: "Action relevant de la gestion des risques."
+        },
+        {
+          id: "radio_b2_irm_securite",
+          label: "Santé et sécurité en IRM",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_hygiene_infections",
+          label: "Hygiène et prévention des infections en imagerie médicale",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_produits_contraste",
+          label: "Gestion des produits de contraste",
+          hint: "Action relevant de la sécurité du patient."
+        },
+        {
+          id: "radio_b2_registres",
+          label: "Registre de pratiques / observatoire / base de données",
+          hint: "Exemples visibles en annexe bloc 2 : FRAN, ETIS, Seno Log, Angio mammographie, Cohorte EndoCryo, Renape, Big Renape."
+        },
+        {
+          id: "radio_b2_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action soumise au CNPR pour validation."
+        }
       ]
     },
     {
@@ -4569,46 +4668,150 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
+      ruleText: "Validation radiologie : 2 actions minimum dans ce bloc.",
       requirements: { min: 2 },
       allReferentialActions: [
-        "Formation relation patient",
-        "Information patient",
-        "Association de patients",
-        "Enquête satisfaction",
-        "Dispositif d’annonce"
+        "Optimiser l’accueil physique en centre d’imagerie médicale",
+        "Bonnes pratiques d’accueil au secrétariat du centre d’imagerie médicale",
+        "Personne compétente en radioprotection (PCR) – formation de renouvellement de niveau 1/2",
+        "Optimiser l’accueil téléphonique en centre d’imagerie médicale",
+        "Annonce d’une maladie grave : comment dire et accompagner",
+        "RGPD : impacts et actions à mener pour le radiologue",
+        "Introduction à l’identifiant national de santé (INS)",
+        "Participation à une association d’usagers du système de santé agréée",
+        "Registre intégrant des données patients",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "radio_b3_relation", label: "Formation relation patient", hint: "Communication et accompagnement." },
-        { id: "radio_b3_info", label: "Information patient", hint: "Information, consentement, préparation à l’examen." },
-        { id: "radio_b3_asso", label: "Action avec association de patients", hint: "Association d’usagers ou de patients." },
-        { id: "radio_b3_satisfaction", label: "Enquête satisfaction / PREMs", hint: "Mesure de l’expérience patient." }
+        {
+          id: "radio_b3_accueil_physique",
+          label: "Optimiser l’accueil physique en centre d’imagerie médicale",
+          hint: "Action classée dans le référentiel au titre de la bientraitance."
+        },
+        {
+          id: "radio_b3_secretariat",
+          label: "Bonnes pratiques d’accueil au secrétariat",
+          hint: "Action classée dans le référentiel au titre de la bientraitance."
+        },
+        {
+          id: "radio_b3_pcr",
+          label: "PCR – formation de renouvellement niveau 1/2",
+          hint: "Action classée dans le référentiel au bloc 3."
+        },
+        {
+          id: "radio_b3_accueil_telephonique",
+          label: "Optimiser l’accueil téléphonique en centre d’imagerie médicale",
+          hint: "Action classée dans le référentiel au titre de communiquer / informer."
+        },
+        {
+          id: "radio_b3_annonce_maladie_grave",
+          label: "Annonce d’une maladie grave : comment dire et accompagner",
+          hint: "Action classée dans le référentiel au titre de communiquer / informer."
+        },
+        {
+          id: "radio_b3_rgpd",
+          label: "RGPD : impacts et actions à mener pour le radiologue",
+          hint: "Action classée dans le référentiel au titre de l’e-santé."
+        },
+        {
+          id: "radio_b3_ins",
+          label: "Introduction à l’identifiant national de santé (INS)",
+          hint: "Action classée dans le référentiel au titre de l’e-santé."
+        },
+        {
+          id: "radio_b3_association_usagers",
+          label: "Association d’usagers du système de santé agréée",
+          hint: "Le référentiel renvoie à la liste nationale des associations d’usagers agréées ; d’autres actions radiologiques avec ces associations peuvent être retenues."
+        },
+        {
+          id: "radio_b3_registre_patient",
+          label: "Registre intégrant des données patients",
+          hint: "Exemple visible en annexe : FRI report – radiologie interventionnelle oncologique (bloc 3)."
+        },
+        {
+          id: "radio_b3_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action soumise au CNPR pour validation."
+        }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé du pro",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
+      ruleText: "Validation radiologie : 2 actions minimum dans ce bloc.",
       requirements: { min: 2 },
       allReferentialActions: [
-        "Suivi médical",
-        "Prévention santé",
-        "Activité physique",
-        "Groupe de pairs"
+        "Formation à la radioprotection travailleurs",
+        "La financiarisation n’est pas une fatalité, comment s’organiser pour garder son indépendance",
+        "Retraite, cessation d’activité et transmission",
+        "Gestion des compétences et habilitations",
+        "Intégrer un nouvel associé",
+        "Le salarié compétent en santé et sécurité au travail",
+        "Médico-légal : cas pratiques",
+        "Auto-questionnaire santé du professionnel HAS",
+        "Karasek Job Content Questionnaire",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "radio_b4_suivi", label: "Suivi médical", hint: "Suivi personnel / médecin traitant." },
-        { id: "radio_b4_prevention", label: "Prévention santé", hint: "Action de prévention ou auto-évaluation." },
-        { id: "radio_b4_sport", label: "Activité physique", hint: "Pratique régulière." },
-        { id: "radio_b4_pairs", label: "Groupe de pairs", hint: "Échange entre confrères." }
+        {
+          id: "radio_b4_radioprotection_travailleurs",
+          label: "Formation à la radioprotection des travailleurs",
+          hint: "Action classée dans le référentiel au titre de la prévention des risques."
+        },
+        {
+          id: "radio_b4_independance",
+          label: "Garder son indépendance face à la financiarisation",
+          hint: "Action classée dans le référentiel au titre de la prévention des risques."
+        },
+        {
+          id: "radio_b4_retraite_transmission",
+          label: "Retraite, cessation d’activité et transmission",
+          hint: "Action classée dans le référentiel au titre de la prévention des risques."
+        },
+        {
+          id: "radio_b4_competences_habilitations",
+          label: "Gestion des compétences et habilitations",
+          hint: "Action classée dans le référentiel au titre du management."
+        },
+        {
+          id: "radio_b4_nouvel_associe",
+          label: "Intégrer un nouvel associé",
+          hint: "Action classée dans le référentiel au titre du management."
+        },
+        {
+          id: "radio_b4_salarie_competent_sst",
+          label: "Le salarié compétent en santé et sécurité au travail",
+          hint: "Action classée dans le référentiel dans le champ prévention burn-out / santé-sécurité au travail."
+        },
+        {
+          id: "radio_b4_medico_legal",
+          label: "Médico-légal : cas pratiques",
+          hint: "Action classée dans le référentiel au titre de la prévention des risques."
+        },
+        {
+          id: "radio_b4_autoq_has",
+          label: "Auto-questionnaire HAS santé du professionnel",
+          hint: "Questionnaire préconisé par le CNPRAD, à refaire tous les 2 ans pour le domaine santé globale."
+        },
+        {
+          id: "radio_b4_karasek",
+          label: "Auto-évaluation Karasek",
+          hint: "Questionnaire d’auto-évaluation de santé préconisé par le CNPRAD."
+        },
+        {
+          id: "radio_b4_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action soumise au CNPR pour validation."
+        }
       ]
     }
   ]
 },
+//rhumatologie
 {
   id: "rhumatologie",
   label: "Rhumatologue",
@@ -4616,9 +4819,9 @@
   subtitle: "Spécialité : rhumatologie",
   icon: "🦴",
   theme: {
-    primary: "#ea580c",
-    primary2: "#c2410c",
-    accent: "#f97316"
+    primary: "#7b5ea7",
+    primary2: "#5b3f88",
+    accent: "#2563eb"
   },
   blocks: [
     {
@@ -4628,23 +4831,159 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 3 actions différentes minimum dans ce bloc.",
-      requirements: { min: 3 },
+      ruleText: "Validation rhumatologie : 2 actions différentes minimum dans ce bloc. Certaines actions ont des attendus spécifiques du CNPR.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "DPC rhumatologie",
-        "Congrès de spécialité",
-        "Formation spécialisée",
-        "DU / DIU",
-        "Recherche",
-        "Publication"
+        "Actions de DPC à destination des rhumatologues",
+        "Actions de formation à caractère scientifique ou professionnel dispensées par des organismes labellisés Qualiopi ou structures figurant sur la liste publique des organismes de formation",
+        "Congrès et autres formations retenus par le CNPR",
+        "Formations diplômantes ou certifiantes retenues par le CNPR",
+        "Activités d’enseignement délivrées dans le cadre d’une université",
+        "Formation à la maîtrise de stage universitaire",
+        "Publications ou communications orales ou affichées ou revues de lecture ou commentaires d’articles dans des revues scientifiques",
+        "Participation effective au comité éditorial de revues scientifiques",
+        "Participation à des réunions formalisées de revue bibliographique de type journal club",
+        "Test de lecture d’une revue médicale réussi",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "rhuma_b1_dpc", label: "Action DPC", hint: "Attestation de participation." },
-        { id: "rhuma_b1_congres", label: "Congrès de spécialité", hint: "Congrès ou journée scientifique." },
-        { id: "rhuma_b1_formation", label: "Formation spécialisée", hint: "Formation scientifique ou professionnelle." },
-        { id: "rhuma_b1_diplome", label: "Formation diplômante", hint: "DU, DIU ou équivalent." },
-        { id: "rhuma_b1_recherche", label: "Activité de recherche", hint: "Projet ou étude." },
-        { id: "rhuma_b1_publication", label: "Publication scientifique", hint: "Article ou contribution." }
+        {
+          id: "rhumato_b1_dpc",
+          label: "Actions de DPC à destination des rhumatologues",
+          hint: "Participation comme apprenant ou formateur ; minimum de 2 DPC sur 6 ans pour valider une action."
+        },
+        {
+          id: "rhumato_b1_formation_scientifique",
+          label: "Formation scientifique ou professionnelle par organisme Qualiopi / liste publique",
+          hint: "Congrès, FMC ou autre formation ; pour les congrès, au moins 2 congrès différents sur 6 ans pour valider une action ; pour les formations hors congrès, au moins 3 sessions de FMC par an pendant au moins 2 ans."
+        },
+        {
+          id: "rhumato_b1_congres_sfr",
+          label: "Congrès annuel de la Société française de rhumatologie (SFR)",
+          hint: "Congrès national retenu par le CNPR au titre du bloc 1."
+        },
+        {
+          id: "rhumato_b1_journees_nationales_sfr",
+          label: "Journées nationales de rhumatologie de la SFR",
+          hint: "Formation / congrès retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_section_rachis",
+          label: "Réunion de la Section Rachis de la SFR",
+          hint: "Formation spécialisée retenue par le CNPR."
+        },
+        {
+          id: "rhumato_b1_education_therapeutique_sfr",
+          label: "Journée d’Éducation Thérapeutique de la SFR",
+          hint: "Journée thématique retenue par le CNPR."
+        },
+        {
+          id: "rhumato_b1_section_arthrose",
+          label: "Journée de la Section Arthrose de la SFR",
+          hint: "Journée thématique retenue par le CNPR."
+        },
+        {
+          id: "rhumato_b1_grep",
+          label: "Journée Nationale de l’Épaule du GREP",
+          hint: "Formation nationale retenue par le CNPR."
+        },
+        {
+          id: "rhumato_b1_grio",
+          label: "Journée annuelle du Groupe de recherche et d’information sur les ostéoporoses (GRIO)",
+          hint: "Formation / congrès retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_sfetd",
+          label: "Congrès national de la Société Française d’Étude et de Traitement de la Douleur (SFETD)",
+          hint: "Congrès retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_rhumagerie",
+          label: "Congrès Rhumagerie",
+          hint: "Congrès retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_sims",
+          label: "Congrès de la Société d’Imagerie Musculo-Squelettique (SIMS)",
+          hint: "Congrès retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_eular",
+          label: "Congrès de l’European League Against Rheumatism (EULAR)",
+          hint: "Congrès international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_acr",
+          label: "Congrès de l’American College of Rheumatology (ACR)",
+          hint: "Congrès international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_oarsi",
+          label: "Congrès de l’Osteoarthritis Research Society International (OARSI)",
+          hint: "Congrès international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_asbmr",
+          label: "Congrès de l’American Society for Bone and Mineral Research (ASBMR)",
+          hint: "Congrès international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_ects",
+          label: "Congrès de l’European Calcified Tissue Society (ECTS)",
+          hint: "Congrès international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_wco_iof_esceo",
+          label: "Congrès WCO-IOF-ESCEO",
+          hint: "Congrès international retenu par le CNPR dans le champ de l’ostéoporose."
+        },
+        {
+          id: "rhumato_b1_european_crystal_network",
+          label: "European Crystal Network Workshop",
+          hint: "Workshop international retenu par le CNPR."
+        },
+        {
+          id: "rhumato_b1_du_diu",
+          label: "Formation diplômante ou certifiante retenue par le CNPR",
+          hint: "Ex. 2e DES ou FST disponibles pour les rhumatologues : cancérologie, douleur, expertise médicale – préjudice corporel, médecine du sport, soins palliatifs."
+        },
+        {
+          id: "rhumato_b1_enseignement_universitaire",
+          label: "Activité d’enseignement universitaire",
+          hint: "Minimum de 8 heures d’enseignement / formation par an durant au moins 2 ans."
+        },
+        {
+          id: "rhumato_b1_msu",
+          label: "Formation à la maîtrise de stage universitaire",
+          hint: "Formation proposée par l’ANDPC ou par une URPS."
+        },
+        {
+          id: "rhumato_b1_publication",
+          label: "Publication / communication scientifique / revue de lecture",
+          hint: "Dans le domaine de la rhumatologie ; revues indexées ou avec comité de lecture ; position de 1er, 2e, 3e, dernier ou avant-dernier auteur ; au minimum 1 publication sur le cycle."
+        },
+        {
+          id: "rhumato_b1_comite_editorial",
+          label: "Participation effective au comité éditorial d’une revue scientifique",
+          hint: "Soit activité de rédacteur en chef ou adjoint, soit activité de révision d’un minimum de 3 articles par an pendant la période de 6 ans."
+        },
+        {
+          id: "rhumato_b1_journal_club",
+          label: "Réunion formalisée de revue bibliographique de type journal club",
+          hint: "Participation à au moins 6 réunions sur le cycle ; réunions conformes à la fiche méthode HAS."
+        },
+        {
+          id: "rhumato_b1_test_lecture",
+          label: "Test de lecture d’une revue médicale réussi",
+          hint: "Action explicitement prévue dans le bloc 1 du référentiel rhumatologie."
+        },
+        {
+          id: "rhumato_b1_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, évaluée et validée a priori ou a posteriori par le CNP."
+        }
       ]
     },
     {
@@ -4654,22 +4993,72 @@
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-      requirements: { min: 2 },
+      ruleText: "Validation rhumatologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "Audit clinique",
-        "EPP",
-        "RCP",
-        "Registre",
-        "Protocoles",
-        "Gestion des risques"
+        "Participation régulière à un registre de pratiques",
+        "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés au titre du DPC publiés par l’ANDPC",
+        "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés dispensés par des organismes de formation labellisés Qualiopi ou structures figurant sur la liste publique",
+        "Actions d’amélioration des pratiques organisées au sein des établissements de santé : RMM, RCP, CREX, autres méthodes d’EPP, patients traceurs",
+        "Exercice coordonné et protocolé d’une équipe pluriprofessionnelle de soins en ambulatoire",
+        "Activités de recherche clinique ou épidémiologique institutionnelle",
+        "Publications ou communications orales ou affichées ou revues de lecture ou commentaires d’articles dans des revues scientifiques",
+        "Participation effective au comité éditorial de revues scientifiques",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "rhuma_b2_audit", label: "Audit clinique", hint: "Audit structuré." },
-        { id: "rhuma_b2_epp", label: "EPP / analyse de pratiques", hint: "Évaluation des pratiques." },
-        { id: "rhuma_b2_rcp", label: "RCP", hint: "Réunion de concertation pluridisciplinaire." },
-        { id: "rhuma_b2_registre", label: "Participation à un registre", hint: "Contribution active." },
-        { id: "rhuma_b2_protocoles", label: "Protocoles / procédures", hint: "Élaboration ou mise à jour." }
+        {
+          id: "rhumato_b2_registre_pratiques",
+          label: "Participation régulière à un registre de pratiques",
+          hint: "Participation active pendant la durée de vie du registre avec un minimum de 2 ans et inclusion d’un minimum de 10 patients sur la durée de participation."
+        },
+        {
+          id: "rhumato_b2_combatt",
+          label: "Participation à un registre validé de la spécialité (ex. registre COMBATT)",
+          hint: "Exemple visible en annexe : observatoire national des combinaisons de thérapies ciblées dans les maladies inflammatoires à médiation immunitaire (IMIDs)."
+        },
+        {
+          id: "rhumato_b2_dpc_epp",
+          label: "Action d’analyse de pratiques / gestion des risques / programme intégré DPC",
+          hint: "Action publiée par l’ANDPC à destination des rhumatologues ; éligibilité de fait."
+        },
+        {
+          id: "rhumato_b2_qualiopi_epp",
+          label: "Action d’analyse de pratiques / gestion des risques par organisme Qualiopi",
+          hint: "Action délivrée par un organisme labellisé Qualiopi ou structure figurant sur la liste publique ; éligibilité de fait."
+        },
+        {
+          id: "rhumato_b2_rmm_rcp_crex",
+          label: "RMM / RCP / CREX / autres méthodes d’EPP / patients traceurs",
+          hint: "Minimum de 4 participations pour valider une action."
+        },
+        {
+          id: "rhumato_b2_exercice_coordonne",
+          label: "Exercice coordonné et protocolé d’une équipe pluriprofessionnelle de soins en ambulatoire",
+          hint: "Action prévue par le référentiel dans le bloc 2, dans une logique de coordination des soins."
+        },
+        {
+          id: "rhumato_b2_recherche",
+          label: "Activités de recherche clinique ou épidémiologique institutionnelle",
+          hint: "Participation comme investigateur principal ou inclusion / adressage d’un minimum de 10 patients dans un protocole académique."
+        },
+        {
+          id: "rhumato_b2_publication",
+          label: "Publications / communications / revues de lecture",
+          hint: "Publications dans le domaine de la rhumatologie ; revues indexées ou avec comité de lecture ; au minimum 1 publication sur le cycle."
+        },
+        {
+          id: "rhumato_b2_comite_editorial",
+          label: "Participation effective au comité éditorial d’une revue scientifique",
+          hint: "Dans le domaine de la rhumatologie ; rédacteur en chef / adjoint ou activité de révision d’au moins 3 articles par an pendant la période de 6 ans."
+        },
+        {
+          id: "rhumato_b2_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, validée a priori ou a posteriori par le CNP."
+        }
       ]
     },
     {
@@ -4679,46 +5068,170 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-      requirements: { min: 2 },
+      ruleText: "Validation rhumatologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "Formation relation patient",
-        "ETP",
-        "Association de patients",
-        "Enquête satisfaction",
-        "Programme patient"
+        "Actions de formation sur le thème de la relation patient délivrées par des organismes de formation labellisés Qualiopi ou par un ODPC ou par des structures figurant sur la liste publique des organismes de formation",
+        "Formations diplômantes ou certifiantes sur le thème de la relation patient organisées par les universités",
+        "Action réalisée dans le cadre d’une association d’usagers du système de santé agréée",
+        "Programme associant des patients",
+        "Registre / observatoire / base de données intégrant des données patients",
+        "Participation à un dispositif d’annonce",
+        "Patients traceurs",
+        "Action d’éducation thérapeutique",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "rhuma_b3_relation", label: "Formation relation patient", hint: "Communication et accompagnement." },
-        { id: "rhuma_b3_etp", label: "Éducation thérapeutique", hint: "Programme patient ou participation." },
-        { id: "rhuma_b3_asso", label: "Action avec association de patients", hint: "Association d’usagers ou de patients." },
-        { id: "rhuma_b3_satisfaction", label: "Enquête satisfaction / PREMs", hint: "Mesure de l’expérience patient." }
+        {
+          id: "rhumato_b3_formation_relation",
+          label: "Formation sur le thème de la relation patient",
+          hint: "Soit action publiée par l’ANDPC à destination des rhumatologues, soit action d’un autre organisme avec minimum d’une journée de participation."
+        },
+        {
+          id: "rhumato_b3_diplome_relation",
+          label: "Formation diplômante ou certifiante sur le thème de la relation patient",
+          hint: "Formation universitaire dédiée à la relation patient."
+        },
+        {
+          id: "rhumato_b3_association_usagers",
+          label: "Action réalisée dans le cadre d’une association d’usagers agréée",
+          hint: "Exemples d’associations listées : France Lyme, Gougerot-Sjögren, Alliance Maladies Rares, Fibromyalgie France, AFPric, AFL+, Spondyl’Asso, etc."
+        },
+        {
+          id: "rhumato_b3_programme_patient",
+          label: "Programme élaboré pour le patient ou associant des patients",
+          hint: "Action en lien avec l’information, l’accompagnement, l’implication ou la co-construction avec les patients."
+        },
+        {
+          id: "rhumato_b3_registre_patient",
+          label: "Registre / observatoire intégrant des données patients",
+          hint: "Action relevant à la fois du suivi des pratiques et de la prise en compte de l’expérience / des données patients."
+        },
+        {
+          id: "rhumato_b3_dispositif_annonce",
+          label: "Participation à un dispositif d’annonce",
+          hint: "Action formalisée d’annonce ou d’accompagnement du patient dans son parcours."
+        },
+        {
+          id: "rhumato_b3_patients_traceurs",
+          label: "Patients traceurs",
+          hint: "Participation à la méthode patient traceur dans une logique d’amélioration de la relation et de l’expérience patient."
+        },
+        {
+          id: "rhumato_b3_etp",
+          label: "Action d’éducation thérapeutique",
+          hint: "Ex. Journée d’Éducation Thérapeutique de la SFR ou programme d’éducation thérapeutique du patient."
+        },
+        {
+          id: "rhumato_b3_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action conforme à une fiche méthode HAS ou aux critères FSM, validée par le CNP."
+        }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé du pro",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-      requirements: { min: 2 },
+      ruleText: "Validation rhumatologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "Suivi médical",
-        "Prévention santé",
-        "Activité physique",
-        "Groupe de pairs"
+        "Action de formation sur le thème de la santé personnelle du médecin",
+        "Auto-évaluation de son état de santé et de son suivi",
+        "Participation à des groupes d’échange et d’analyse entre pairs",
+        "Actions de gestion des risques professionnels",
+        "Actions de prévention en santé personnelle",
+        "Avoir un médecin traitant / organiser son suivi de santé",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
-        { id: "rhuma_b4_suivi", label: "Suivi médical", hint: "Suivi personnel / médecin traitant." },
-        { id: "rhuma_b4_prevention", label: "Prévention santé", hint: "Action de prévention ou auto-évaluation." },
-        { id: "rhuma_b4_sport", label: "Activité physique", hint: "Pratique régulière." },
-        { id: "rhuma_b4_pairs", label: "Groupe de pairs", hint: "Échange entre confrères." }
+        {
+          id: "rhumato_b4_formation_sante_personnelle",
+          label: "Action de formation sur le thème de la santé personnelle du médecin",
+          hint: "Action du bloc 4 en lien avec la santé psychique et physique, l’ergonomie, la prévention ou la qualité de vie au travail."
+        },
+        {
+          id: "rhumato_b4_autoevaluation_has",
+          label: "Auto-questionnaire HAS santé du professionnel",
+          hint: "Questionnaire recommandé par le CNPR ; à refaire tous les deux ans pour la partie santé globale."
+        },
+        {
+          id: "rhumato_b4_autoevaluation_karasek",
+          label: "Auto-évaluation avec questionnaire Karasek",
+          hint: "Questionnaire recommandé par le CNPR sur les contraintes psychosociales au travail."
+        },
+        {
+          id: "rhumato_b4_autoevaluation_nordic",
+          label: "Auto-évaluation avec Nordic Musculoskeletal Questionnaire",
+          hint: "Questionnaire recommandé par le CNPR, pertinent pour la santé musculo-squelettique du professionnel."
+        },
+        {
+          id: "rhumato_b4_autoevaluation_pss",
+          label: "Auto-évaluation avec Perceived Stress Scale (PSS)",
+          hint: "Questionnaire recommandé par le CNPR pour l’évaluation du stress perçu."
+        },
+        {
+          id: "rhumato_b4_groupes_pairs",
+          label: "Participation à des groupes d’échange et d’analyse entre pairs",
+          hint: "Action dédiée à la santé personnelle du médecin."
+        },
+        {
+          id: "rhumato_b4_risques_professionnels",
+          label: "Action de gestion des risques professionnels",
+          hint: "Exemples de thèmes : santé psychique et physique, ergonomie au travail, radioprotection, prévention et gestion des risques psychosociaux, comité de vie professionnelle santé au travail, santé environnementale et éco-soins."
+        },
+        {
+          id: "rhumato_b4_prevention_vaccins",
+          label: "Suivi de la tenue à jour de ses vaccinations personnelles",
+          hint: "Action de prévention en santé personnelle prévue dans la liste actualisée du bloc 4."
+        },
+        {
+          id: "rhumato_b4_prevention_depistages",
+          label: "Participation aux dépistages organisés selon sa situation personnelle",
+          hint: "Ex. dépistages organisés des cancers selon la situation de santé du professionnel."
+        },
+        {
+          id: "rhumato_b4_prevention_rps",
+          label: "Prévention et gestion des risques psycho-sociaux",
+          hint: "Action de prévention en santé personnelle reconnue dans l’annexe 11."
+        },
+        {
+          id: "rhumato_b4_prevention_sport",
+          label: "Activité sportive régulière",
+          hint: "Action explicitement listée en prévention santé personnelle."
+        },
+        {
+          id: "rhumato_b4_prevention_culture",
+          label: "Activité culturelle régulière en tant qu’acteur",
+          hint: "Action explicitement listée en prévention santé personnelle."
+        },
+        {
+          id: "rhumato_b4_prevention_caritatif",
+          label: "Participation à une activité caritative ou de coopération",
+          hint: "Action listée au titre de la prévention en santé personnelle."
+        },
+        {
+          id: "rhumato_b4_medecin_traitant",
+          label: "Organisation de son suivi de santé personnel",
+          hint: "Démarche cohérente avec le bloc 4 : médecin traitant, suivi de santé, prise en compte de son état de santé dans son exercice."
+        },
+        {
+          id: "rhumato_b4_hors_liste",
+          label: "Action hors liste validée par le CNP",
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, validée a priori ou a posteriori par le CNP."
+        }
       ]
     }
   ]
 }
+
 	  
     ]
   });
