@@ -10,230 +10,288 @@
     id: "podologues",
     label: "Pédicure-podologue",
     profiles: [
-      {
-        id: "pedicure-podologue",
-        label: "Pédicure-podologue",
-        fullTitle: "Certification Périodique du Pédicure-podologue",
-        subtitle: "Profession : pédicure-podologue",
-        icon: "🦶",
-        theme: {
-          primary: "#b45309",
-          primary2: "#92400e",
-          accent: "#f59e0b"
+{
+  id: "pedicure-podologue",
+  label: "Pédicure-podologue",
+  fullTitle: "Certification Périodique du Pédicure-podologue",
+  subtitle: "Profession : pédicurie-podologie",
+  icon: "🦶",
+  theme: {
+    primary: "#0f766e",
+    primary2: "#115e59",
+    accent: "#14b8a6"
+  },
+  blocks: [
+    {
+      id: "bloc1",
+      label: "Bloc 1",
+      shortLabel: "Connaissances et compétences",
+      colorClass: "bloc1",
+      openByDefault: false,
+      validationMode: "minimumDistinct",
+      ruleText: "Validation pédicure-podologue : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
+      allReferentialActions: [
+        "Simulation en santé",
+        "Programme intégré au titre de l’ANDPC",
+        "Programme intégré avec action de formation continue",
+        "Présentation de travaux scientifiques",
+        "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+        "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé d’une équipe pluriprofessionnelle",
+        "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme au sein d’un exercice coordonné",
+        "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+        "AFGSU2 et renouvellement",
+        "Action hors liste validée par le CNPP"
+      ],
+      actions: [
+        {
+          id: "pp_b1_simulation",
+          label: "Simulation en santé",
+          hint: "Type d’action : évaluation des pratiques professionnelles, gestion des risques, formation cognitive ; durée minimale 6h ; attestation de présence ; évaluation des acquis ; absence de lien d’intérêt avec des entreprises commercialisant des produits ou services pouvant donner lieu à une prise en charge du patient."
         },
-        blocks: [
-          {
-            id: "bloc1",
-            label: "Bloc 1",
-            shortLabel: "Connaissances et compétences",
-            colorClass: "bloc1",
-            openByDefault: false,
-            validationMode: "minimumDistinct",
-            ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-            requirements: {
-              min: 2
-            },
-            allReferentialActions: [
-              "Action DPC en pédicurie-podologie",
-              "Formation scientifique ou professionnelle",
-              "Congrès, colloque ou journée professionnelle",
-              "Formation certifiante ou diplômante",
-              "Atelier pratique / mise en situation",
-              "Activité d’enseignement",
-              "Activité de recherche",
-              "Publication / communication professionnelle",
-              "Action hors liste validée"
-            ],
-            actions: [
-              {
-                id: "podo_b1_dpc",
-                label: "Action DPC en pédicurie-podologie",
-                hint: "Attestation de participation."
-              },
-              {
-                id: "podo_b1_formation",
-                label: "Formation scientifique ou professionnelle",
-                hint: "Formation reconnue dans le champ de la pédicurie-podologie."
-              },
-              {
-                id: "podo_b1_congres",
-                label: "Congrès / colloque / journée professionnelle",
-                hint: "Participation à un événement professionnel."
-              },
-              {
-                id: "podo_b1_diplome",
-                label: "Formation certifiante ou diplômante",
-                hint: "DU, DIU ou autre formation certifiante."
-              },
-              {
-                id: "podo_b1_atelier",
-                label: "Atelier pratique / mise en situation",
-                hint: "Ex. geste technique, prise en charge du pied diabétique, orthèses, etc."
-              },
-              {
-                id: "podo_b1_enseignement",
-                label: "Activité d’enseignement",
-                hint: "Intervention ou enseignement dans le champ professionnel."
-              }
-            ]
-          },
-          {
-            id: "bloc2",
-            label: "Bloc 2",
-            shortLabel: "Qualité des pratiques et des soins",
-            colorClass: "bloc2",
-            openByDefault: false,
-            validationMode: "minimumDistinct",
-            ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-            requirements: {
-              min: 2
-            },
-            allReferentialActions: [
-              "Analyse de pratiques / EPP",
-              "Audit clinique",
-              "Protocoles / procédures",
-              "Participation à un registre / observatoire",
-              "Gestion des risques",
-              "Travail en équipe pluriprofessionnelle",
-              "Revue de dossiers / revue qualité",
-              "Action hors liste validée"
-            ],
-            actions: [
-              {
-                id: "podo_b2_epp",
-                label: "Analyse de pratiques / EPP",
-                hint: "Action d’évaluation ou d’analyse des pratiques."
-              },
-              {
-                id: "podo_b2_audit",
-                label: "Audit clinique",
-                hint: "Audit structuré selon une méthode reconnue."
-              },
-              {
-                id: "podo_b2_protocoles",
-                label: "Protocoles / procédures",
-                hint: "Élaboration, actualisation ou mise en œuvre."
-              },
-              {
-                id: "podo_b2_registre",
-                label: "Participation à un registre / observatoire",
-                hint: "Contribution active à une démarche de suivi."
-              },
-              {
-                id: "podo_b2_risques",
-                label: "Gestion des risques",
-                hint: "Prévention des événements indésirables et amélioration de la sécurité."
-              },
-              {
-                id: "podo_b2_equipe",
-                label: "Travail en équipe pluriprofessionnelle",
-                hint: "Participation coordonnée à une prise en charge collective."
-              }
-            ]
-          },
-          {
-            id: "bloc3",
-            label: "Bloc 3",
-            shortLabel: "Relation avec les patients",
-            colorClass: "bloc3",
-            openByDefault: false,
-            validationMode: "minimumDistinct",
-            ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-            requirements: {
-              min: 2
-            },
-            allReferentialActions: [
-              "Formation relation thérapeutique",
-              "Programme d’éducation / prévention",
-              "Action avec association d’usagers ou de patients",
-              "Enquête de satisfaction / PREMs",
-              "Accompagnement / adhésion du patient",
-              "Action hors liste validée"
-            ],
-            actions: [
-              {
-                id: "podo_b3_relation",
-                label: "Formation relation thérapeutique",
-                hint: "Communication, écoute, pédagogie, alliance thérapeutique."
-              },
-              {
-                id: "podo_b3_prevention",
-                label: "Programme d’éducation / prévention",
-                hint: "Ex. prévention du pied diabétique, chaussage, hygiène, autonomie."
-              },
-              {
-                id: "podo_b3_association",
-                label: "Action avec association d’usagers ou de patients",
-                hint: "Participation à une action avec les usagers."
-              },
-              {
-                id: "podo_b3_satisfaction",
-                label: "Enquête de satisfaction / PREMs",
-                hint: "Mesure de l’expérience patient."
-              },
-              {
-                id: "podo_b3_adhesion",
-                label: "Accompagnement / adhésion du patient",
-                hint: "Action centrée sur l’observance, la compréhension et l’implication du patient."
-              }
-            ]
-          },
-          {
-            id: "bloc4",
-            label: "Bloc 4",
-            shortLabel: "Santé personnelle du professionnel",
-            colorClass: "bloc4",
-            openByDefault: false,
-            validationMode: "minimumDistinct",
-            ruleText: "Prototype : 2 actions différentes minimum dans ce bloc.",
-            requirements: {
-              min: 2
-            },
-            allReferentialActions: [
-              "Suivi médical / médecin traitant",
-              "Auto-évaluation de son état de santé",
-              "Prévention des TMS",
-              "Gestes et postures / ergonomie",
-              "Gestion du stress / fatigue",
-              "Activité physique régulière",
-              "Prévention santé",
-              "Action hors liste validée"
-            ],
-            actions: [
-              {
-                id: "podo_b4_suivi",
-                label: "Suivi médical / médecin traitant",
-                hint: "Avoir un suivi médical personnel."
-              },
-              {
-                id: "podo_b4_autoeval",
-                label: "Auto-évaluation de son état de santé",
-                hint: "Démarche personnelle régulière."
-              },
-              {
-                id: "podo_b4_tms",
-                label: "Prévention des TMS",
-                hint: "Prévention des troubles musculo-squelettiques liés à l’exercice."
-              },
-              {
-                id: "podo_b4_ergonomie",
-                label: "Gestes et postures / ergonomie",
-                hint: "Préservation physique dans la pratique quotidienne."
-              },
-              {
-                id: "podo_b4_stress",
-                label: "Gestion du stress / fatigue",
-                hint: "Prévention de la surcharge, récupération, équilibre."
-              },
-              {
-                id: "podo_b4_sport",
-                label: "Activité physique régulière",
-                hint: "Pratique sportive ou activité physique régulière."
-              }
-            ]
-          }
-        ]
-      }
+        {
+          id: "pp_b1_programme_integre_andpc",
+          label: "Programme intégré au titre de l’ANDPC",
+          hint: "Type d’action : évaluation des pratiques professionnelles, formation cognitive, gestion des risques ; formation et analyse des pratiques ; durée minimale 6h ; attestation de présence avec émargement ; attestation de fin de formation ; évaluation des acquis ; modalité présentielle."
+        },
+        {
+          id: "pp_b1_programme_integre_fc",
+          label: "Programme intégré avec action de formation continue",
+          hint: "Action explicitement listée dans le référentiel des pédicures-podologues ; relève d’un programme intégré articulant formation continue et autres dimensions du parcours."
+        },
+        {
+          id: "pp_b1_presentation_travaux",
+          label: "Présentation de travaux scientifiques",
+          hint: "Intervenant dans un congrès labellisé ; intervention ou poster en lien avec les compétences du pédicure-podologue ; attestation de l’organisateur ; 2 max par période de certification."
+        },
+        {
+          id: "pp_b1_projet_recherche",
+          label: "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+          hint: "Projet validé par le comité scientifique après avis de la commission scientifique du CNPP ; en lien avec les compétences en pédicurie-podologie ; attestation de participation au projet par l’institution ou l’établissement de santé ; 2 max par période de certification."
+        },
+        {
+          id: "pp_b1_parcours_sante_exercice_coordonne",
+          label: "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé",
+          hint: "Action transversale axe 1/2/3/4 ; adhésion à un exercice coordonné ; attestation de participation par la structure ; action visée par le projet de santé de la structure porteuse ; 2 max par période de certification."
+        },
+        {
+          id: "pp_b1_etp_coordination",
+          label: "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme",
+          hint: "Action transversale axe 1/2/3/4 ; programme ETP ou de coordination ; attestation de participation active de la structure d’exercice coordonné ; 2 max par période de certification."
+        },
+        {
+          id: "pp_b1_instances_representatives",
+          label: "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+          hint: "Élu ordinal, élu d’un syndicat représentatif, membre du conseil d’administration du CNPP ou membre de la commission scientifique du CNPP ; 1 mandat par période de certification ; attestation de la structure avec poste occupé."
+        },
+        {
+          id: "pp_b1_afgsu2",
+          label: "AFGSU2 et renouvellement",
+          hint: "Action explicitement listée dans le référentiel pédicure-podologue comme action transversale."
+        },
+        {
+          id: "pp_b1_hors_liste",
+          label: "Action hors liste validée par le CNPP",
+          hint: "Action soumise au comité scientifique du CNPP pour validation selon les critères de labellisation en annexe."
+        }
+      ]
+    },
+    {
+      id: "bloc2",
+      label: "Bloc 2",
+      shortLabel: "Qualité des pratiques et des soins",
+      colorClass: "bloc2",
+      openByDefault: false,
+      validationMode: "minimumDistinct",
+      ruleText: "Validation pédicure-podologue : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
+      allReferentialActions: [
+        "Simulation en santé",
+        "Programme intégré au titre de l’ANDPC",
+        "Programme intégré avec action de formation continue",
+        "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+        "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé d’une équipe pluriprofessionnelle",
+        "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme au sein d’un exercice coordonné",
+        "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+        "AFGSU2 et renouvellement",
+        "Action hors liste validée par le CNPP"
+      ],
+      actions: [
+        {
+          id: "pp_b2_simulation",
+          label: "Simulation en santé",
+          hint: "Action relevant à la fois de l’évaluation des pratiques professionnelles, de la gestion des risques et de la formation cognitive ; durée minimale 6h ; attestation de présence ; évaluation des acquis."
+        },
+        {
+          id: "pp_b2_programme_integre_andpc",
+          label: "Programme intégré au titre de l’ANDPC",
+          hint: "Formation et analyse des pratiques ; durée minimale 6h ; présence avec émargement ; attestation de fin de formation ; évaluation des acquis ; modalité présentielle."
+        },
+        {
+          id: "pp_b2_programme_integre_fc",
+          label: "Programme intégré avec action de formation continue",
+          hint: "Action explicitement listée dans le référentiel pédicure-podologue pour les axes 1/2/3."
+        },
+        {
+          id: "pp_b2_projet_recherche",
+          label: "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+          hint: "Type d’action : formation cognitive, gestion des risques, évaluation des pratiques professionnelles ; projet validé par le comité scientifique et la commission scientifique du CNPP."
+        },
+        {
+          id: "pp_b2_parcours_sante_exercice_coordonne",
+          label: "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé",
+          hint: "Type d’action : gestion des risques ; adhésion à un exercice coordonné ; attestation de participation par la structure ; projet visé par le projet de santé de la structure porteuse."
+        },
+        {
+          id: "pp_b2_etp_coordination",
+          label: "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme",
+          hint: "Type d’action : gestion des risques, évaluation des pratiques professionnelles, formation cognitive ; programme ETP ou de coordination ; attestation de participation active de la structure."
+        },
+        {
+          id: "pp_b2_instances_representatives",
+          label: "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+          hint: "Type d’action : gestion des risques, formation continue ; mandat ordinal, syndical ou CNPP."
+        },
+        {
+          id: "pp_b2_afgsu2",
+          label: "AFGSU2 et renouvellement",
+          hint: "Action explicitement listée dans le référentiel comme transversale."
+        },
+        {
+          id: "pp_b2_hors_liste",
+          label: "Action hors liste validée par le CNPP",
+          hint: "Action soumise au comité scientifique du CNPP pour validation."
+        }
+      ]
+    },
+    {
+      id: "bloc3",
+      label: "Bloc 3",
+      shortLabel: "Relation avec les patients",
+      colorClass: "bloc3",
+      openByDefault: false,
+      validationMode: "minimumDistinct",
+      ruleText: "Validation pédicure-podologue : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
+      allReferentialActions: [
+        "Simulation en santé",
+        "Programme intégré au titre de l’ANDPC",
+        "Programme intégré avec action de formation continue",
+        "Présentation de travaux scientifiques",
+        "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+        "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé d’une équipe pluriprofessionnelle",
+        "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme au sein d’un exercice coordonné",
+        "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+        "AFGSU2 et renouvellement",
+        "Action hors liste validée par le CNPP"
+      ],
+      actions: [
+        {
+          id: "pp_b3_simulation",
+          label: "Simulation en santé",
+          hint: "Action transversale axe 1/2/3 ; durée minimale 6h ; attestation de présence aux sessions ; fiche d’aides à la progression."
+        },
+        {
+          id: "pp_b3_programme_integre_andpc",
+          label: "Programme intégré au titre de l’ANDPC",
+          hint: "Action transversale axe 1/2/3 articulant formation et analyse des pratiques."
+        },
+        {
+          id: "pp_b3_programme_integre_fc",
+          label: "Programme intégré avec action de formation continue",
+          hint: "Action explicitement listée dans le référentiel pédicure-podologue."
+        },
+        {
+          id: "pp_b3_presentation_travaux",
+          label: "Présentation de travaux scientifiques",
+          hint: "Intervenant ou poster en lien avec les compétences du pédicure-podologue, dans un congrès labellisé."
+        },
+        {
+          id: "pp_b3_projet_recherche",
+          label: "Porteur d’un projet de recherche institutionnelle ou établissement de santé",
+          hint: "Peut relever de l’axe 3 lorsque le projet est en lien avec les compétences du pédicure-podologue et validé par le CNPP."
+        },
+        {
+          id: "pp_b3_parcours_sante_exercice_coordonne",
+          label: "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé",
+          hint: "Action transversale pouvant contribuer à la qualité de la relation patient dans un cadre pluriprofessionnel."
+        },
+        {
+          id: "pp_b3_etp_coordination",
+          label: "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme",
+          hint: "Action transversale axe 1/2/3/4 ; attestation de participation active de la structure d’exercice coordonné."
+        },
+        {
+          id: "pp_b3_instances_representatives",
+          label: "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+          hint: "Action transversale également valorisable dans l’axe 3 selon le référentiel."
+        },
+        {
+          id: "pp_b3_afgsu2",
+          label: "AFGSU2 et renouvellement",
+          hint: "Action explicitement listée dans le référentiel pédicure-podologue comme transversale."
+        },
+        {
+          id: "pp_b3_hors_liste",
+          label: "Action hors liste validée par le CNPP",
+          hint: "Action soumise au comité scientifique du CNPP pour validation."
+        }
+      ]
+    },
+    {
+      id: "bloc4",
+      label: "Bloc 4",
+      shortLabel: "Santé personnelle du professionnel",
+      colorClass: "bloc4",
+      openByDefault: false,
+      validationMode: "minimumDistinct",
+      ruleText: "Validation pédicure-podologue : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
+      allReferentialActions: [
+        "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé d’une équipe pluriprofessionnelle",
+        "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme au sein d’un exercice coordonné",
+        "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+        "AFGSU2 et renouvellement",
+        "Action hors liste validée par le CNPP"
+      ],
+      actions: [
+        {
+          id: "pp_b4_parcours_sante_exercice_coordonne",
+          label: "Participation à un parcours de santé et d’études de cas en exercice coordonné et protocolé",
+          hint: "Action transversale axe 1/2/3/4 ; adhésion à un exercice coordonné ; attestation de participation active de la structure."
+        },
+        {
+          id: "pp_b4_etp_coordination",
+          label: "Participation à l’élaboration interprofessionnelle d’un programme d’ETP ou coordination d’un programme",
+          hint: "Action transversale axe 1/2/3/4 ; programme ETP ou coordination en exercice coordonné ; attestation de participation active."
+        },
+        {
+          id: "pp_b4_instances_representatives",
+          label: "Participation aux instances représentatives et décisionnelles de la pédicurie-podologie",
+          hint: "Mandat ordinal, syndical ou responsabilité au sein du CNPP ; attestation par la structure."
+        },
+        {
+          id: "pp_b4_afgsu2",
+          label: "AFGSU2 et renouvellement",
+          hint: "Action explicitement listée dans le référentiel pédicure-podologue comme transversale aux 4 axes."
+        },
+        {
+          id: "pp_b4_hors_liste",
+          label: "Action hors liste validée par le CNPP",
+          hint: "Action soumise au comité scientifique du CNPP pour validation selon les critères de labellisation en annexe."
+        }
+      ]
+    }
+  ]
+}
     ]
   });
 })();
