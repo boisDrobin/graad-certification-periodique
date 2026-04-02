@@ -2764,7 +2764,7 @@
 //neurologie
 {
   id: "neurologie",
-  label: "Neurologie",
+  label: "Neurologue",
   fullTitle: "Certification Périodique du Neurologue",
   subtitle: "Spécialité : neurologie",
   icon: "🧠",
@@ -2781,123 +2781,137 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
+      ruleText: "Validation neurologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation indemnisées au titre du DPC publiées par l’ANDPC",
-        "Actions de formation présentielles à caractère scientifique ou professionnel, dispensées par des organismes certifiés Qualiopi ou figurant sur la liste publique des organismes de formation",
+        "Actions de formation présentielles à caractère scientifique ou professionnel dispensées par des organismes de formation certifiés Qualiopi ou figurant sur la liste publique des organismes de formation",
         "Participation à une journée d’une association régionale de formation",
-        "Série de formation en ligne de type e-learning : minimum 4 webinaires par an",
+        "Participation à une série de formation en ligne de type e-learning",
         "Participation à un congrès de niveau international",
-        "Participation à un congrès national généraliste ou de surspécialité neurologique organisé par une société savante française",
+        "Participation à un congrès national généraliste ou de surspécialité organisé par une société savante française",
         "Participation à une action de formation organisée par un établissement public ou privé à caractère scientifique ou professionnel labellisée par le CNP",
         "Formations diplômantes ou certifiantes organisées par les établissements publics à caractère scientifique",
         "Enseignements universitaires",
-        "Valider l’EBN (European Board of Neurology) ou participer à un enseignement international de l’EBN",
+        "Validation de l’EBN ou participation à un enseignement international de l’EBN",
         "Activités de recherche",
         "Travaux d’expertise scientifique se déroulant dans un cadre de traçabilité, de rigueur et d’indépendance",
         "Publications en premier ou dernier auteur dans des revues référencées à comité de lecture indépendant",
         "Participation effective au comité éditorial de revues scientifiques",
         "Participation à des réunions formalisées de revue bibliographique",
-        "Formation à la maîtrise de stage universitaire par une UFR, l’ANDPC ou une URPS",
+        "Formation à la maîtrise de stage universitaire",
         "Participation à un programme intégré proposé par un ODPC dans le cadre des orientations prioritaires nationales ou de la spécialité",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "neuro_b1_dpc",
-          label: "Formation DPC ANDPC",
-          hint: "Actions de formation indemnisées au titre du DPC, destinées aux neurologues ; auditeur ou formateur."
+          label: "Action de formation indemnisée au titre du DPC publiée par l’ANDPC",
+          hint: "Auditeur ou formateur ; action destinée aux neurologues."
         },
         {
           id: "neuro_b1_formation_qualiopi",
-          label: "Formation Qualiopi / organisme listé / e-learning",
-          hint: "Formation scientifique ou professionnelle ; peut inclure une journée d’association régionale ou une série e-learning avec minimum 4 webinaires par an."
+          label: "Formation scientifique ou professionnelle Qualiopi / liste publique",
+          hint: "Formation présentielle à caractère scientifique ou professionnel ; peut inclure aussi une journée d’association régionale de formation."
+        },
+        {
+          id: "neuro_b1_elearning",
+          label: "Formation en ligne de type e-learning",
+          hint: "Série de formation en ligne avec minimum de 4 webinaires par an."
         },
         {
           id: "neuro_b1_congres_international",
-          label: "Congrès international",
-          hint: "Présence minimale de 2 jours. Exemples d’annexe : EAN, AAN, MDS, AD/PD, ECTRIMS, ILAE, autre congrès international validé par le CNP."
+          label: "Congrès international de neurologie",
+          hint: "Présence minimale de deux jours. Exemples d’annexe : EAN, AAN, MDS, AD/PD, ECTRIMS, ILAE."
         },
         {
           id: "neuro_b1_congres_national",
-          label: "Congrès national ou de surspécialité",
-          hint: "Présence minimale de 2 jours pour les congrès de plusieurs jours ou totalité du congrès s’il dure 1 jour. Exemples : JNLF, journées de la SFN, Rencontres de Neurologies, Journées scientifiques de l’ANLLF."
+          label: "Congrès national ou de surspécialité de neurologie",
+          hint: "Présence minimale de deux jours pour les congrès de plusieurs jours, ou sur la totalité du congrès si durée d’une journée. Exemples : JNLF, journées de la SFN, Rencontres de Neurologies, Journées scientifiques de l’ANLLF."
         },
         {
           id: "neuro_b1_formation_label_cnp",
-          label: "Formation labellisée par le CNP",
-          hint: "Action de formation organisée par un établissement public ou privé à caractère scientifique ou professionnel et labellisée par le CNP."
+          label: "Action de formation labellisée par le CNP",
+          hint: "Formation organisée par un établissement public ou privé à caractère scientifique ou professionnel et labellisée par le CNP."
         },
         {
           id: "neuro_b1_du_diu_master",
-          label: "DU / DIU / master / thèse de science",
-          hint: "Formation diplômante ou certifiante en rapport direct avec la pratique de la neurologie."
+          label: "Formation diplômante ou certifiante (DU, DIU, master…)",
+          hint: "Formation organisée par un établissement public à caractère scientifique."
         },
         {
           id: "neuro_b1_enseignement_universitaire",
           label: "Enseignement universitaire",
-          hint: "Nombre minimum de 4 heures de cours par an sur la période."
+          hint: "Activité d’enseignement universitaire dans le champ de la neurologie."
         },
         {
           id: "neuro_b1_ebn",
-          label: "EBN / enseignement international EBN",
-          hint: "Valider l’European Board of Neurology ou participer à un enseignement international type Spring School."
+          label: "Validation de l’EBN ou enseignement international EBN",
+          hint: "European Board of Neurology ou enseignement international de l’EBN."
         },
         {
           id: "neuro_b1_recherche",
-          label: "Activité de recherche",
-          hint: "Participation effective à des études cliniques ou épidémiologiques institutionnelles dans un établissement public ; rôle de type investigateur principal."
+          label: "Activités de recherche",
+          hint: "Activités de recherche dans le champ de la neurologie."
         },
         {
           id: "neuro_b1_expertise",
           label: "Travaux d’expertise scientifique",
-          hint: "Expert, membre d’un groupe de travail, de lecture ou de rédaction ; dans un cadre de traçabilité, rigueur et indépendance."
+          hint: "Sociétés savantes, CNP, universités, instituts de formation, CHU, instituts de recherche, HAS, ANSM, autres agences de santé, agences européennes."
         },
         {
           id: "neuro_b1_publication",
-          label: "Publication scientifique",
-          hint: "Publication en premier ou dernier auteur dans une revue à comité de lecture indépendant ; minimum 1 article sur la période."
+          label: "Publication scientifique en premier ou dernier auteur",
+          hint: "Publication dans une revue référencée à comité de lecture indépendant."
         },
         {
           id: "neuro_b1_comite_editorial",
-          label: "Comité éditorial / reviewing",
-          hint: "Participation effective au comité éditorial de revues scientifiques ; minimum 2 articles/an sur la période."
+          label: "Participation effective au comité éditorial d’une revue scientifique",
+          hint: "Participation effective à un comité éditorial de revue scientifique."
         },
         {
           id: "neuro_b1_revue_biblio",
           label: "Réunions formalisées de revue bibliographique",
-          hint: "Minimum 4 sessions par an sur la période."
+          hint: "Participation à des réunions structurées de revue de littérature."
         },
         {
           id: "neuro_b1_msu",
           label: "Formation à la maîtrise de stage universitaire",
-          hint: "Formation via UFR, ANDPC ou URPS ; auditeur ou formateur."
+          hint: "Formation universitaire dédiée à la maîtrise de stage."
         },
         {
           id: "neuro_b1_programme_integre",
           label: "Programme intégré ODPC",
-          hint: "Programme intégré dans le cadre des orientations prioritaires nationales ou de la spécialité, dans le domaine de la pratique neurologique."
+          hint: "Programme intégré proposé par un ODPC dans le cadre des orientations prioritaires nationales ou de la spécialité."
         },
         {
           id: "neuro_b1_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action proposée par le médecin puis validée et valorisée par le CNP."
+          hint: "Action proposée par le neurologue, évaluée a priori ou a posteriori par le comité scientifique du CNP."
         }
       ]
     },
     {
       id: "bloc2",
       label: "Bloc 2",
-      shortLabel: "Qualité des pratiques",
+      shortLabel: "Qualité des pratiques et des soins",
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
+      ruleText: "Validation neurologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "Participation régulière et active à un registre de pratiques",
+        "Participation régulière à un registre de pratiques",
         "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés au titre du DPC",
         "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés dispensés par des organismes figurant sur la liste publique des organismes de formation",
-        "Actions d’amélioration des pratiques organisées au sein des établissements de santé (RMM-CREX)",
-        "Participation régulière et impliquée à des réunions de concertation pluridisciplinaire (RCP)",
-        "Audit clinique, chemin clinique",
+        "Actions d’amélioration des pratiques organisées au sein des établissements de santé",
+        "Participation régulière et impliquée à des réunions de concertation pluridisciplinaire",
+        "Audit clinique",
+        "Chemin clinique",
         "Exercice coordonné et protocolisé d’une équipe pluriprofessionnelle de soins en ambulatoire",
         "Suivi d’indicateurs de qualité et de sécurité des soins",
         "Participation à un réseau de vigilance",
@@ -2911,114 +2925,119 @@
         "Analyse de cas cliniques",
         "Patient traceur",
         "Revue de pertinence des soins",
-        "Participation à un programme intégré proposé par ODPC dans le cadre des orientations prioritaires",
+        "Participation à un programme intégré proposé par un ODPC dans le cadre des orientations prioritaires",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "neuro_b2_registre",
-          label: "Registre de pratiques",
-          hint: "Participation régulière et active ; minimum 1 sur la période. Peut aussi valider le bloc 3 si le registre comporte des données patient."
+          label: "Participation régulière à un registre de pratiques",
+          hint: "Participation active à un registre de pratiques dans le champ de la neurologie."
         },
         {
-          id: "neuro_b2_dpc_app",
-          label: "DPC analyse de pratiques / gestion des risques",
-          hint: "Actions ou programmes intégrés au titre du DPC ; minimum 2 actions sur la période."
+          id: "neuro_b2_dpc_epp",
+          label: "Action d’analyse de pratiques / gestion des risques / programme intégré DPC",
+          hint: "Action publiée par l’ANDPC à destination des neurologues."
         },
         {
-          id: "neuro_b2_organisme_app",
-          label: "Analyse de pratiques / gestion des risques hors DPC",
-          hint: "Dispensées par des organismes figurant sur la liste publique ; minimum 2 actions sur la période."
+          id: "neuro_b2_qualiopi_epp",
+          label: "Action d’analyse de pratiques / gestion des risques par organisme figurant sur la liste publique",
+          hint: "Action structurée répondant aux attendus du CNP et aux méthodes HAS."
         },
         {
           id: "neuro_b2_rmm_crex",
-          label: "RMM / CREX",
-          hint: "Actions d’amélioration des pratiques organisées en établissement, avec critères d’assiduité, présence, implication ; minimum 2 actions sur la période."
+          label: "Actions d’amélioration des pratiques en établissement",
+          hint: "Exemples : RMM, CREX et autres démarches structurées de retour d’expérience."
         },
         {
           id: "neuro_b2_rcp",
-          label: "Réunions de concertation pluridisciplinaire (RCP)",
-          hint: "Participation régulière et impliquée ; minimum 4 réunions par an sur la période."
+          label: "Réunions de concertation pluridisciplinaire",
+          hint: "Participation régulière et impliquée à des RCP."
         },
         {
-          id: "neuro_b2_audit",
-          label: "Audit clinique / chemin clinique",
-          hint: "Au moins 1 action sur la période."
+          id: "neuro_b2_audit_clinique",
+          label: "Audit clinique",
+          hint: "Action structurée d’évaluation des pratiques."
         },
         {
-          id: "neuro_b2_equipe_ambulatoire",
+          id: "neuro_b2_chemin_clinique",
+          label: "Chemin clinique",
+          hint: "Participation à une démarche de chemin clinique."
+        },
+        {
+          id: "neuro_b2_exercice_coordonne",
           label: "Exercice coordonné et protocolisé en équipe pluriprofessionnelle",
-          hint: "Durée minimale de 3 ans sur la période."
+          hint: "Action relevant de la coordination des soins en ambulatoire."
         },
         {
           id: "neuro_b2_indicateurs",
           label: "Suivi d’indicateurs qualité et sécurité des soins",
-          hint: "Durée minimale de 3 ans sur la période."
+          hint: "Suivi et amélioration d’indicateurs de qualité et sécurité."
         },
         {
           id: "neuro_b2_vigilance",
-          label: "Réseau de vigilance",
-          hint: "Participation sur une durée minimale de 3 ans sur la période."
+          label: "Participation à un réseau de vigilance",
+          hint: "Participation à un réseau de vigilance dans le champ de la neurologie."
         },
         {
-          id: "neuro_b2_gdr_equipe",
+          id: "neuro_b2_gestion_risques_equipe",
           label: "Gestion des risques en équipe",
-          hint: "Durée minimale de 3 ans sur la période."
+          hint: "Analyse collective et amélioration de la sécurité des pratiques."
         },
         {
-          id: "neuro_b2_maitrise_stage",
+          id: "neuro_b2_msu",
           label: "Encadrement / maîtrise de stage",
-          hint: "Durée minimale de 2 ans sur la période."
+          hint: "Encadrement dans le cadre universitaire ou de stages."
         },
         {
-          id: "neuro_b2_staff_service",
-          label: "Staffs de service clinique",
-          hint: "Minimum 1 par mois pendant 24 mois sur la période."
+          id: "neuro_b2_staffs",
+          label: "Staffs de service clinique / équipe soignante",
+          hint: "Participation à des staffs cliniques et pluriprofessionnels."
         },
         {
           id: "neuro_b2_recommandations",
           label: "Missions d’expertise / recommandations",
-          hint: "Organisées par CNP, Ordres, syndicats, sociétés savantes, ministère ou agences ; minimum 2 actions ou missions sur la période."
+          hint: "Participation à des recommandations ou missions d’expertise."
         },
         {
-          id: "neuro_b2_certif_etablissement",
-          label: "Certification des établissements de santé",
-          hint: "Participation effective aux actions liées à la certification des établissements."
+          id: "neuro_b2_certification",
+          label: "Participation aux actions liées à la certification des établissements de santé",
+          hint: "Action institutionnelle reconnue dans le bloc 2."
         },
         {
           id: "neuro_b2_tcs",
           label: "Tests de Concordance de Scripts",
-          hint: "Participation à 1 action sur la période."
+          hint: "Action structurée d’amélioration des pratiques."
         },
         {
           id: "neuro_b2_simulation",
           label: "Simulation en santé",
-          hint: "Participation à 1 action sur la période."
+          hint: "Action de simulation dans le champ neurologique."
         },
         {
           id: "neuro_b2_cas_cliniques",
           label: "Analyse de cas cliniques",
-          hint: "Participation à 1 action sur la période."
+          hint: "Travail structuré sur des cas cliniques."
         },
         {
           id: "neuro_b2_patient_traceur",
           label: "Patient traceur",
-          hint: "Participation à 1 action sur la période."
+          hint: "Méthode HAS appliquée à l’amélioration des pratiques."
         },
         {
           id: "neuro_b2_pertinence",
           label: "Revue de pertinence des soins",
-          hint: "Participation à 1 action sur la période."
+          hint: "Analyse de la pertinence dans les parcours et actes."
         },
         {
           id: "neuro_b2_programme_integre",
           label: "Programme intégré ODPC",
-          hint: "Dans le cadre des orientations prioritaires ; participation à 1 action sur la période."
+          hint: "Programme intégré proposé par un ODPC dans le cadre des orientations prioritaires."
         },
         {
           id: "neuro_b2_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action proposée par le médecin puis validée et valorisée par le CNP."
+          hint: "Action proposée par le neurologue et validée par le CNP après analyse."
         }
       ]
     },
@@ -3029,6 +3048,10 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
+      ruleText: "Validation neurologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation sur le thème de la relation patient délivrées par un ODPC et publiées par l’ANDPC ou par des structures figurant sur la liste publique des organismes de formation",
         "Formations diplômantes ou certifiantes sur le thème de la relation patient",
@@ -3037,108 +3060,167 @@
         "Conception et participation à la mise en place de programmes associant des patients",
         "Patients traceurs",
         "Faciliter le partage d’expériences interprofessionnelles et de bonnes pratiques pour améliorer la prise en charge des patients vulnérables, de la fin de vie, et lutter contre l’inégalité d’accès aux soins et les discriminations",
-        "Actions de promotion de la santé environnementale et l’éco-responsabilité dans le cadre des éco-soins",
+        "Actions de promotion de la santé environnementale et de l’éco-responsabilité dans le cadre des éco-soins",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "neuro_b3_formation_relation",
-          label: "Formation relation patient",
+          label: "Formation sur le thème de la relation patient",
           hint: "Formation délivrée par un ODPC publiée par l’ANDPC ou par une structure figurant sur la liste publique des organismes de formation."
         },
         {
-          id: "neuro_b3_du_relation",
-          label: "DU / DIU / formation certifiante relation patient",
-          hint: "Formation diplômante ou certifiante sur le thème de la relation patient."
+          id: "neuro_b3_diplome_relation",
+          label: "Formation diplômante ou certifiante sur la relation patient",
+          hint: "Formation universitaire ou certifiante dédiée à la relation avec le patient."
         },
         {
           id: "neuro_b3_registre_patient",
-          label: "Registre / observatoire avec données patients",
-          hint: "Participation régulière à un registre de pratiques intégrant des données patients de type PROMs / PREMs."
+          label: "Registre / observatoire / base de données intégrant des données patients",
+          hint: "Participation régulière à un registre incluant des données issues des patients."
         },
         {
           id: "neuro_b3_association_usagers",
-          label: "Association d’usagers agréée",
-          hint: "Interventions lors de journées, fonctions dans l’association, actions de sensibilisation, fiches d’information patients, enquêtes de satisfaction."
+          label: "Action réalisée dans le cadre d’une association d’usagers agréée",
+          hint: "Interventions lors de journées, fonctions exercées, actions de sensibilisation, fiches d’information patients, enquêtes de satisfaction."
         },
         {
-          id: "neuro_b3_programmes_patients",
-          label: "Programme associant des patients",
-          hint: "Éducation thérapeutique, patients experts, projet impliquant un travail avec les patients ou évaluant des dossiers patients."
+          id: "neuro_b3_programme_patient",
+          label: "Programme élaboré pour le patient ou associant des patients",
+          hint: "Programme impliquant les patients, les aidants ou des patients experts."
         },
         {
           id: "neuro_b3_patients_traceurs",
           label: "Patients traceurs",
-          hint: "Actions réalisées au sein d’une unité d’hospitalisation évaluant la prise en charge globale ou spécifique d’un ou plusieurs patients."
+          hint: "Action relevant de la méthode patient traceur, centrée sur l’expérience et la relation patient."
         },
         {
-          id: "neuro_b3_vulnerabilites_fin_de_vie",
-          label: "Patients vulnérables / fin de vie / discriminations",
-          hint: "Participation à des groupes de travail impliquant l’évaluation des pratiques orientées vers la relation avec le patient."
+          id: "neuro_b3_partage_interpro",
+          label: "Partage d’expériences interprofessionnelles et bonnes pratiques",
+          hint: "Patients vulnérables, fin de vie, inégalités d’accès aux soins, discriminations."
         },
         {
           id: "neuro_b3_eco_soins",
-          label: "Éco-soins / santé environnementale",
-          hint: "Études cliniques réalisées ou participation sur la thématique de l’éco-responsabilité dans une institution, un organisme de formation ou une structure nationale."
+          label: "Promotion de la santé environnementale et des éco-soins",
+          hint: "Développement de compétences en santé environnementale et éco-responsabilité."
         },
         {
           id: "neuro_b3_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action proposée par le médecin puis validée et valorisée par le CNP."
+          hint: "Action proposée par le neurologue et validée par le CNP."
         }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé personnelle",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
+      ruleText: "Validation neurologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation sur le thème de la santé personnelle du médecin",
         "Participation à des groupes d’échange et d’analyse entre pairs permettant de travailler sur la santé personnelle du médecin",
-        "Auto-évaluation de son état de santé et son suivi avec propositions d’outils de suivi ou de prise en charge",
+        "Auto-évaluation de son état de santé et de son suivi",
         "Actions de gestion des risques professionnels délivrées par un ODPC ou par des structures figurant sur la liste publique des organismes de formation",
-        "Actions dans le domaine de la prévention en santé : calendrier vaccinal, risques psychosociaux, radioprotection, santé environnementale, nutritionnelle, activités physiques et sportives",
+        "Actions dans le domaine de la prévention en santé : respect du calendrier vaccinal, prévention et gestion des risques psychosociaux, radioprotection, santé environnementale ou nutritionnelle, activités physiques et sportives",
         "Participation à un programme intégré proposé par un ODPC sur le thème de la santé personnelle ou des risques psychosociaux",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "neuro_b4_formation_sante",
-          label: "Formation santé personnelle du médecin",
-          hint: "Action de formation sur le thème de la santé personnelle du médecin ; au moins 1 action sur la période."
+          label: "Action de formation sur le thème de la santé personnelle du médecin",
+          hint: "Formation dédiée à la santé personnelle, à la qualité de vie au travail ou à la prévention."
         },
         {
           id: "neuro_b4_groupes_pairs",
-          label: "Groupes d’échange et d’analyse entre pairs",
-          hint: "Participation à des groupes permettant de travailler sur la santé personnelle du médecin."
+          label: "Participation à des groupes d’échange et d’analyse entre pairs",
+          hint: "Groupes permettant de travailler sur la santé personnelle du médecin."
         },
         {
-          id: "neuro_b4_autoevaluation",
-          label: "Auto-évaluation de son état de santé",
-          hint: "Avec propositions d’outils de suivi ou de prise en charge pour l’auto-repérage / auto-dépistage ; le référentiel évoque aussi durée hebdomadaire de travail, durée des vacances (5 semaines), prise de congés parentaux."
+          id: "neuro_b4_autoeval_has",
+          label: "Auto-questionnaire HAS santé du professionnel",
+          hint: "Questionnaire préconisé par le CNP de Neurologie ; santé globale à refaire tous les deux ans."
         },
         {
-          id: "neuro_b4_gestion_risques_pro",
-          label: "Gestion des risques professionnels",
-          hint: "Action délivrée par un ODPC ou par une structure figurant sur la liste publique ; au moins 1 action sur la période."
+          id: "neuro_b4_autoeval_karasek",
+          label: "Auto-évaluation avec questionnaire Karasek",
+          hint: "Questionnaire préconisé par le CNP de Neurologie."
         },
         {
-          id: "neuro_b4_prevention_sante",
-          label: "Prévention en santé",
-          hint: "Respect du calendrier vaccinal, prévention et gestion des risques psychosociaux, radioprotection, actions en santé environnementale ou nutritionnelle, activités physiques et sportives ; au moins 1 action sur la période."
+          id: "neuro_b4_autoeval_nordic",
+          label: "Auto-évaluation avec Nordic Musculoskeletal Questionnaire",
+          hint: "Questionnaire préconisé par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_autoeval_pss",
+          label: "Auto-évaluation avec Perceived Stress Scale (PSS)",
+          hint: "Questionnaire préconisé par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_autoeval_madrs",
+          label: "Auto-évaluation avec MADRS",
+          hint: "Montgomery Asberg Depression Rating Scale préconisée par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_autoeval_lipt",
+          label: "Auto-évaluation avec questionnaire LIPT",
+          hint: "Leymann Inventory of Psychological Terror préconisé par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_autoeval_had",
+          label: "Auto-évaluation avec échelle HAD",
+          hint: "Hospital Anxiety and Depression Scale préconisée par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_autoeval_mbi",
+          label: "Auto-évaluation avec Maslach Burnout Inventory (MBI)",
+          hint: "Questionnaire préconisé par le CNP de Neurologie."
+        },
+        {
+          id: "neuro_b4_risques_pro",
+          label: "Action de gestion des risques professionnels",
+          hint: "Exemples de thèmes listés : santé psychique et physique, ergonomie au travail, radioprotection, prévention et gestion des risques psychosociaux, participation active à un comité de vie professionnelle santé au travail, santé environnementale et éco-responsabilité."
+        },
+        {
+          id: "neuro_b4_prevention_vaccins",
+          label: "Respect du calendrier vaccinal",
+          hint: "Action de prévention en santé explicitement listée dans le bloc 4."
+        },
+        {
+          id: "neuro_b4_prevention_rps",
+          label: "Prévention et gestion des risques psychosociaux",
+          hint: "Action de prévention en santé explicitement listée dans le bloc 4."
+        },
+        {
+          id: "neuro_b4_prevention_radioprotection",
+          label: "Radioprotection",
+          hint: "Action de prévention en santé explicitement listée dans le bloc 4."
+        },
+        {
+          id: "neuro_b4_prevention_sante_env",
+          label: "Santé environnementale ou nutritionnelle",
+          hint: "Action de prévention en santé explicitement listée dans le bloc 4."
+        },
+        {
+          id: "neuro_b4_prevention_sport",
+          label: "Activités physiques et sportives",
+          hint: "Action de prévention en santé explicitement listée dans le bloc 4."
         },
         {
           id: "neuro_b4_programme_integre",
-          label: "Programme intégré ODPC santé personnelle / RPS",
-          hint: "Programme intégré sur le thème de la santé personnelle ou des risques psychosociaux ; au moins 1 action sur la période."
+          label: "Programme intégré ODPC sur la santé personnelle ou les risques psychosociaux",
+          hint: "Programme intégré proposé par un ODPC ; au moins une action sur la période."
         },
         {
           id: "neuro_b4_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action proposée par le médecin puis validée et valorisée par le CNP."
+          hint: "Action proposée par le neurologue, évaluée a priori ou a posteriori par le CNP."
         }
       ]
     }
@@ -3147,13 +3229,13 @@
 //ophtalmologie
 {
   id: "ophtalmologie",
-  label: "Ophtalmologie",
+  label: "Ophtalmologiste",
   fullTitle: "Certification Périodique de l’Ophtalmologiste",
   subtitle: "Spécialité : ophtalmologie",
   icon: "👁️",
   theme: {
     primary: "#0f766e",
-    primary2: "#0f766e",
+    primary2: "#0b5f5a",
     accent: "#2dd4bf"
   },
   blocks: [
@@ -3164,10 +3246,13 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 3,
+      ruleText: "Validation ophtalmologie : 3 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 3
+      },
       allReferentialActions: [
         "Actions de formation au titre du DPC",
-        "Actions de formation à caractère scientifique ou professionnel dispensées par des organismes labellisés Qualiopi",
+        "Actions de formation à caractère scientifique ou professionnel dispensées par des organismes de formation labellisés Qualiopi",
         "Participation à un congrès de niveau international ou national",
         "Participation à une journée d’une société savante ou d’une association régionale",
         "Participation à plusieurs formations en ligne de type e-learning organisée par une société savante ou une association régionale",
@@ -3179,145 +3264,301 @@
         "Participation effective au comité éditorial de revues scientifiques",
         "Abonnement à une revue médicale avec tests de lecture effectué",
         "Travaux d’expertise",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "opht_b1_dpc",
-          label: "Formation DPC ANDPC",
+          label: "Action de formation au titre du DPC",
           hint: "Actions publiées par l’ANDPC concernant les ophtalmologistes, conformes aux orientations prioritaires générales ou spécifiques ; participation comme apprenant ou formateur."
         },
         {
-          id: "opht_b1_qualiopi",
-          label: "Formation scientifique / professionnelle Qualiopi",
-          hint: "Action en lien avec les orientations prioritaires générales ou spécifiques publiées par l’ANDPC ; apprenant ou formateur."
+          id: "opht_b1_formation_qualiopi",
+          label: "Action de formation scientifique ou professionnelle par organisme Qualiopi",
+          hint: "Action en rapport avec les orientations prioritaires générales ou spécifiques publiées par l’ANDPC pour la période concernée, en lien avec le CNP d’ophtalmologie ; participation comme apprenant ou formateur."
         },
         {
-          id: "opht_b1_congres",
-          label: "Congrès national ou international",
-          hint: "Durée d’au moins une journée ; liste validée par le CNPO-AFO. Exemples d’annexe : SFO, ESCRS, EVER, EURETINA, JRO, APODEP, AOP."
+          id: "opht_b1_congres_national_international",
+          label: "Participation à un congrès national ou international",
+          hint: "Durée d’au moins une journée ; liste validée par le CNPO-AFO ; 7 heures effectives minimum pour valider une journée, avec cumul possible de demi-journées."
         },
         {
-          id: "opht_b1_societe_savante",
-          label: "Journée de société savante ou association régionale",
-          hint: "Durée d’au moins une journée ; réunions et journées validées par le CNPO-AFO."
+          id: "opht_b1_sfo",
+          label: "Congrès SFO",
+          hint: "Congrès national retenu dans l’annexe 2 du référentiel ophtalmologie."
+        },
+        {
+          id: "opht_b1_escrs",
+          label: "Congrès ESCRS",
+          hint: "Congrès international retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_ever",
+          label: "Congrès EVER",
+          hint: "Congrès international retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_euretina",
+          label: "Congrès EURETINA",
+          hint: "Congrès international retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_jro",
+          label: "Congrès JRO",
+          hint: "Congrès retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_apodep",
+          label: "Congrès APODEP",
+          hint: "Congrès retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_aop",
+          label: "Congrès AOP",
+          hint: "Congrès retenu dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_journee_societe_savante",
+          label: "Journée d’une société savante ou d’une association régionale",
+          hint: "Durée d’au moins une journée ; soumise aux mêmes critères que les congrès."
+        },
+        {
+          id: "opht_b1_safir",
+          label: "Réunion de la société savante SAFIR",
+          hint: "Réunion de société savante explicitement listée dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_sfg",
+          label: "Réunion de la société savante SFG",
+          hint: "Réunion de société savante explicitement listée dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_cfsr",
+          label: "Réunion de la société savante CFSR",
+          hint: "Réunion de société savante explicitement listée dans l’annexe 2."
+        },
+        {
+          id: "opht_b1_seve",
+          label: "Réunion de la société savante SEVE",
+          hint: "Réunion de société savante explicitement listée dans l’annexe 2."
         },
         {
           id: "opht_b1_elearning",
-          label: "Formations en ligne e-learning",
-          hint: "Le cumul doit être supérieur ou égal à 7 heures pour valider une action."
+          label: "Formations en ligne de type e-learning",
+          hint: "Organisées par une société savante ou une association régionale ; le cumul doit être supérieur ou égal à 7 heures pour valider une action."
         },
         {
           id: "opht_b1_du_diu",
-          label: "DU / DIU d’ophtalmologie",
+          label: "Formation diplômante ou certifiante universitaire (DU / DIU)",
           hint: "Liste validée par le CNPO-AFO sur proposition du COUF."
         },
         {
-          id: "opht_b1_enseignement",
+          id: "opht_b1_du_lentilles",
+          label: "DU Adaptation de lentilles de contact",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_chir_refraction",
+          label: "DIU de chirurgie réfractive et de phakoémulsification",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_retino_vitreenne",
+          label: "DIU de chirurgie rétino-vitréenne",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_cornee",
+          label: "DIU Cornée",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_glaucomes",
+          label: "DIU Glaucomes",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_imagerie_retinienne",
+          label: "DU Imagerie et pathologie rétinienne / DU Imagerie rétinienne et traitements maculaires",
+          hint: "Formations explicitement listées en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_inflammations_infections",
+          label: "DIU Inflammations et infections oculaires",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_microchirurgie",
+          label: "DU Microchirurgie ophtalmologique",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_neuro_ophtalmologie",
+          label: "DU Neuro-Ophtalmologie",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_oct",
+          label: "DIU OCT en ophtalmologie",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_oeil_medecine_interne",
+          label: "DU Oeil et médecine interne",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_oncologie_oculaire",
+          label: "DU Oncologie oculaire",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_ophtalmo_pediatrique",
+          label: "DIU Ophtalmologie pédiatrique",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_orbito_palpebro_lacrymale",
+          label: "DIU Pathologie et chirurgie orbito-palpebro-lacrymale",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_diu_surface_oculaire",
+          label: "DIU Surface oculaire",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_du_handicap_visuel",
+          label: "DU Techniques de compensation du handicap visuel",
+          hint: "Formation explicitement listée en annexe 1."
+        },
+        {
+          id: "opht_b1_enseignement_universitaire",
           label: "Activité d’enseignement universitaire",
-          hint: "Activités d’enseignement délivrées dans le cadre d’une université."
+          hint: "Activité d’enseignement délivrée dans le cadre d’une université."
         },
         {
           id: "opht_b1_master2",
-          label: "Obtention d’un Master 2",
-          hint: "Dans le cadre du cursus universitaire."
+          label: "Obtention d’un master 2",
+          hint: "Obtention d’un master 2 dans le cadre du cursus universitaire."
         },
         {
           id: "opht_b1_msu",
-          label: "Maîtrise de stage universitaire",
+          label: "Formation à la maîtrise de stage universitaire",
           hint: "Formation délivrée par un ODPC ou une université reconnue par l’ANDPC."
         },
         {
-          id: "opht_b1_publications",
-          label: "Publication / communication scientifique",
-          hint: "Publications dans le domaine de l’ophtalmologie, revues indexées ou avec comité de lecture, position de 1er ou dernier auteur."
+          id: "opht_b1_publication",
+          label: "Publication / communication scientifique / revue de lecture",
+          hint: "Publications dans le domaine de l’ophtalmologie ; revues indexées ou avec comité de lecture ; position de premier ou dernier auteur."
         },
         {
           id: "opht_b1_comite_editorial",
-          label: "Comité éditorial de revue scientifique",
-          hint: "Revues d’ophtalmologie indexées ou avec comité de lecture ; rédacteur en chef / adjoint ou révision d’au moins 3 articles par an sur la période de 6 ans."
+          label: "Participation effective au comité éditorial d’une revue scientifique",
+          hint: "Soit activité de rédacteur en chef ou adjoint, soit activité de révision d’un minimum de 3 articles par an pendant la période de 6 ans."
         },
         {
-          id: "opht_b1_tests_lecture",
-          label: "Abonnement à une revue avec tests de lecture",
-          hint: "Tests de lecture effectués et réussis : 6 tests par période."
+          id: "opht_b1_test_lecture",
+          label: "Abonnement à une revue médicale avec tests de lecture réussis",
+          hint: "Avec tests de lecture effectués et réussis : 6 tests par période."
         },
         {
           id: "opht_b1_expertise",
           label: "Travaux d’expertise",
-          hint: "Travaux réalisés pour sociétés savantes, CNP, universités, CHU, instituts de recherche, HAS, ANSM, agences, dans un cadre de transparence, rigueur méthodologique et indépendance."
+          hint: "Travaux réalisés pour sociétés savantes, CNP, universités, instituts de formation, CHU, instituts de recherche, HAS, ANSM, autres agences de santé ou agences européennes, dans un cadre de transparence, de rigueur méthodologique et d’indépendance."
         },
         {
           id: "opht_b1_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS ou aux critères FSM, évaluée a priori ou a posteriori par le CS du CNP."
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, évaluée et validée a priori ou a posteriori par le conseil scientifique du CNPO-AFO."
         }
       ]
     },
     {
       id: "bloc2",
       label: "Bloc 2",
-      shortLabel: "Qualité des pratiques",
+      shortLabel: "Qualité des pratiques et des soins",
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation ophtalmologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Participation à un registre de pratiques, observatoire, base de données de la spécialité",
         "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés au titre du DPC",
-        "Participation aux GAP, Groupes d’Amélioration de Pratiques",
-        "Actions d’amélioration des pratiques organisées au sein des établissements de santé : RMM, RCP, CREX, autres méthodes d’EPP, patients traceurs",
-        "Exercice coordonné et protocolé d’une équipe pluriprofessionnelle de soins en ambulatoire au sein d’une CPTS ou d’une ESS",
-        "Autres actions d’amélioration des pratiques : missions, expertises, participation à des recommandations",
+        "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés dispensés par des organismes figurant sur la liste publique des organismes de formation",
+        "Actions d’amélioration des pratiques organisées au sein des établissements de santé",
+        "Exercice coordonné et protocolé d’une équipe pluriprofessionnelle de soins en ambulatoire",
+        "Suivi d’indicateurs de qualité et de sécurité des soins",
+        "Participation à un réseau de vigilance",
+        "Gestion des risques en équipe",
+        "Autres actions d’amélioration des pratiques : missions, expertises, participation à des recommandations à la demande d’un organisateur institutionnel",
         "Encadrement de stages, maîtrise de stage, tutorat",
-        "Activités de recherche",
-        "Action hors liste"
+        "Activités de recherche cliniques ou épidémiologiques institutionnelles",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "opht_b2_registre",
-          label: "Registre / observatoire / base de données",
-          hint: "Participation régulière pendant 2 ans avec prise en compte d’au moins 10 patients."
+          label: "Participation à un registre de pratiques / observatoire / base de données",
+          hint: "Conception d’un nouveau registre ou participation active durant la durée de vie du registre avec un minimum de 2 ans et inclusion d’un minimum de 10 patients sur la durée de participation."
         },
         {
-          id: "opht_b2_dpc_app",
-          label: "Analyse de pratiques / gestion des risques DPC",
-          hint: "Actions ou programmes intégrés publiés par l’ANDPC ou dispensés par un organisme labellisé ; à destination des ophtalmologistes."
+          id: "opht_b2_dpc_epp",
+          label: "Action d’analyse de pratiques / gestion des risques / programme intégré DPC",
+          hint: "Action publiée par l’ANDPC à destination des ophtalmologistes ; éligibilité de fait."
         },
         {
-          id: "opht_b2_gap",
-          label: "GAP – Groupes d’Amélioration de Pratiques",
-          hint: "Selon la formule déposée à l’ANDPC, groupes en lien avec un organisme de DPC agréé ; participation d’un universitaire souhaitée."
+          id: "opht_b2_qualiopi_epp",
+          label: "Action d’analyse de pratiques / gestion des risques par organisme figurant sur la liste publique",
+          hint: "Action conforme aux critères d’éligibilité de la FSM ou à une fiche méthode HAS."
         },
         {
           id: "opht_b2_rmm_rcp_crex",
-          label: "RMM / RCP / CREX / EPP / patients traceurs",
-          hint: "Minimum de 4 participations pour valider une action."
+          label: "Actions d’amélioration des pratiques organisées en établissement",
+          hint: "Exemples : RMM, RCP, CREX, autres démarches d’EPP ; action relevant des méthodes HAS."
         },
         {
-          id: "opht_b2_cpts_ess",
-          label: "Exercice coordonné en CPTS / ESS",
-          hint: "Participation active à la mise en place de la structure ou à son fonctionnement au sein du bureau."
+          id: "opht_b2_exercice_coordonne",
+          label: "Exercice coordonné et protocolé en équipe pluriprofessionnelle",
+          hint: "Participation poursuivie pendant un minimum de 2 ans ; éligibilité de fait."
         },
         {
-          id: "opht_b2_missions",
+          id: "opht_b2_indicateurs",
+          label: "Suivi d’indicateurs qualité et sécurité des soins",
+          hint: "Participation poursuivie pendant un minimum de 2 ans ; éligibilité de fait."
+        },
+        {
+          id: "opht_b2_vigilance",
+          label: "Participation à un réseau de vigilance",
+          hint: "Participation poursuivie pendant un minimum de 2 ans."
+        },
+        {
+          id: "opht_b2_gestion_risques_equipe",
+          label: "Gestion des risques en équipe",
+          hint: "Participation poursuivie pendant un minimum de 2 ans ; éligibilité de fait."
+        },
+        {
+          id: "opht_b2_expertise_recommandations",
           label: "Missions / expertises / recommandations",
-          hint: "Participation à des recommandations ou missions à la demande d’un organisateur institutionnel : CNP, Ordres, syndicats, ministère, agences."
+          hint: "Participation à des recommandations ou expertises à la demande d’un organisateur institutionnel : CNP, Ordres, syndicats, ministère ou agences."
         },
         {
-          id: "opht_b2_tutorat",
-          label: "Encadrement de stages / tutorat",
-          hint: "Encadrement dans le cadre d’un 3e cycle de formation médicale ; participation cumulée équivalente à 6 mois sur le cycle."
+          id: "opht_b2_encadrement",
+          label: "Encadrement de stages / maîtrise de stage / tutorat",
+          hint: "Encadrement ou tutorat dans le cadre d’un 3e cycle de formation médicale ; participation cumulée équivalente à 6 mois sur un cycle de certification."
         },
         {
           id: "opht_b2_recherche",
-          label: "Activité de recherche",
-          hint: "Investigateur principal ou inclusion / adressage d’au moins 10 patients dans un protocole académique."
+          label: "Activités de recherche cliniques ou épidémiologiques institutionnelles",
+          hint: "Participation comme investigateur principal ou inclusion / adressage d’un minimum de 10 patients dans un protocole académique ; action conforme aux critères d’éligibilité de la FSM."
         },
         {
           id: "opht_b2_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS ou aux critères FSM, validée a priori ou a posteriori par le CS du CNP."
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, évaluée et validée a priori ou a posteriori par le conseil scientifique du CNPO-AFO."
         }
       ]
     },
@@ -3328,42 +3569,45 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation ophtalmologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
-        "Actions de formation sur le thème de la relation patient",
+        "Actions de formation sur le thème de la relation patient délivrées par des organismes de formation labellisés Qualiopi ou par un ODPC ou par des structures figurant sur la liste publique des organismes de formation",
         "Formations diplômantes ou certifiantes sur le thème de la relation patient organisées par les universités",
         "Actions réalisées dans le cadre d’associations de patients",
-        "Participation régulière à un registre de pratiques intégrant des données saisies par les patients (PROMs, PREMs)",
+        "Participation régulière à un registre de pratiques, observatoire, base de données de la spécialité, intégrant des données saisies par les patients (PROMs, PREMs)",
         "Conception et participation à la mise en place de programmes associant des patients",
         "Patients traceurs",
         "Participation à un dispositif d’annonce",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "opht_b3_formation_relation",
-          label: "Formation relation patient",
-          hint: "Action ANDPC à destination des médecins ou autre action d’au moins une journée conforme aux critères FSM."
+          label: "Formation sur le thème de la relation patient",
+          hint: "Soit action publiée par l’ANDPC à destination des médecins, soit action de formation par un autre organisme avec minimum d’une journée de participation et conformité aux critères d’éligibilité de la FSM."
         },
         {
-          id: "opht_b3_du_relation",
-          label: "DU / DIU / formation certifiante relation patient",
-          hint: "Formations universitaires listées en annexe 7."
+          id: "opht_b3_diplome_relation",
+          label: "Formation diplômante ou certifiante sur le thème de la relation patient",
+          hint: "Formation universitaire dédiée à la relation patient ; liste renvoyée à l’annexe 7 du référentiel."
         },
         {
           id: "opht_b3_association_patients",
-          label: "Association de patients",
-          hint: "Interventions, fonctions, sensibilisation, fiches d’information, enquêtes de satisfaction ; minimum de 2 actions sur 6 ans."
+          label: "Actions réalisées dans le cadre d’associations de patients",
+          hint: "Interventions lors de journées organisées par les associations de patients, fonctions exercées dans une association, actions de sensibilisation, contribution active à des fiches d’information patients, enquêtes de satisfaction ; minimum de 2 actions sur 6 ans."
         },
         {
           id: "opht_b3_registre_proms_prems",
-          label: "Registre avec PROMs / PREMs",
-          hint: "Conception d’un nouveau registre ou participation active pendant au moins 2 ans avec inclusion d’au moins 10 patients."
+          label: "Registre / observatoire / base de données avec PROMs / PREMs",
+          hint: "Conception d’un nouveau registre ou participation active pendant au moins 2 ans avec inclusion d’au moins 10 patients sur la durée de participation."
         },
         {
           id: "opht_b3_programmes_patients",
-          label: "Programme associant des patients / ETP",
-          hint: "Élaboration d’un programme d’éducation thérapeutique patient ou participation à 4 réunions d’un programme d’ETP sur la période."
+          label: "Programme élaboré pour le patient ou associant des patients",
+          hint: "Exemples : éducation thérapeutique, patients experts ; élaboration d’un programme d’ETP ou participation à 4 réunions d’un programme d’ETP sur la période de 6 ans."
         },
         {
           id: "opht_b3_patients_traceurs",
@@ -3372,68 +3616,106 @@
         },
         {
           id: "opht_b3_dispositif_annonce",
-          label: "Dispositif d’annonce",
-          hint: "Diagnostic d’un cancer, dommage associé aux soins, mauvaise nouvelle ; action bien prévue au référentiel, mais l’extrait remonté ne montre pas tout l’attendu détaillé."
+          label: "Participation à un dispositif d’annonce",
+          hint: "Annonce d’un cancer, d’un dommage associé aux soins, d’une mauvaise nouvelle ou d’une situation nécessitant un accompagnement structuré."
         },
         {
           id: "opht_b3_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS ou aux critères FSM, validée a priori ou a posteriori par le CS du CNP."
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, évaluée et validée par le conseil scientifique du CNPO-AFO."
         }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé personnelle",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation ophtalmologie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation sur le thème de la santé personnelle du médecin",
-        "Avoir un médecin traitant (ou du travail)",
-        "Auto-évaluation de son état de santé et son suivi",
+        "Avoir un médecin traitant ou un médecin du travail",
+        "Auto-évaluation de son état de santé et de son suivi",
         "Actions de gestion des risques professionnels",
         "Formation diplômante sur la santé personnelle du médecin",
         "Actions dans le domaine de la prévention en santé physique et mentale",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "opht_b4_formation_sante",
-          label: "Formation santé personnelle du médecin",
-          hint: "Action publiée par l’ANDPC ou autre action conforme aux critères FSM."
+          label: "Action de formation sur le thème de la santé personnelle du médecin",
+          hint: "Action publiée par l’ANDPC ou autre action conforme aux critères d’éligibilité de la FSM, centrée sur la santé personnelle du professionnel."
         },
         {
           id: "opht_b4_medecin_traitant",
-          label: "Médecin traitant / médecin du travail",
+          label: "Avoir un médecin traitant ou un médecin du travail",
           hint: "Au moins 2 consultations pendant la période de 6 ans ; hors auto-déclaration, parent au 1er degré ou associé."
         },
         {
           id: "opht_b4_autoevaluation",
-          label: "Auto-évaluation de son état de santé",
-          hint: "Renseignement de 3 questionnaires sur la période de 6 ans ; outils proposés en annexe 3."
+          label: "Auto-évaluation de son état de santé et de son suivi",
+          hint: "Renseignement de 3 questionnaires sur la période de 6 ans ; questionnaires proposés dans les annexes du référentiel."
         },
         {
-          id: "opht_b4_risques_pro",
-          label: "Gestion des risques professionnels",
-          hint: "Actions publiées par l’ANDPC ou autre action conforme aux critères FSM ; thèmes détaillés en annexe 4."
+          id: "opht_b4_autoevaluation_has",
+          label: "Auto-questionnaire HAS santé du professionnel",
+          hint: "Questionnaire recommandé par le CNPO-AFO dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_karasek",
+          label: "Auto-évaluation avec questionnaire Karasek",
+          hint: "Questionnaire recommandé par le CNPO-AFO dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_nordic",
+          label: "Auto-évaluation avec Nordic Musculoskeletal Questionnaire",
+          hint: "Questionnaire recommandé par le CNPO-AFO dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_pss",
+          label: "Auto-évaluation avec Perceived Stress Scale (PSS)",
+          hint: "Questionnaire recommandé par le CNPO-AFO dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_madrs",
+          label: "Auto-évaluation avec MADRS",
+          hint: "Montgomery Asberg Depression Rating Scale recommandée dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_lipt",
+          label: "Auto-évaluation avec questionnaire LIPT",
+          hint: "Leymann Inventory of Psychological Terror recommandé dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_autoevaluation_had",
+          label: "Auto-évaluation avec échelle HAD",
+          hint: "Hospital Anxiety and Depression Scale recommandée dans les annexes bloc 4."
+        },
+        {
+          id: "opht_b4_risques_professionnels",
+          label: "Action de gestion des risques professionnels",
+          hint: "Action publiée par l’ANDPC ou autre action conforme aux critères d’éligibilité de la FSM ; thèmes détaillés dans l’annexe 4."
         },
         {
           id: "opht_b4_diu_soigner",
-          label: "Formation diplômante santé personnelle",
+          label: "Formation diplômante sur la santé personnelle du médecin",
           hint: "DIU Soigner les soignants."
         },
         {
-          id: "opht_b4_prevention",
-          label: "Prévention en santé physique et mentale",
-          hint: "Actions en santé environnementale ou nutritionnelle, activités socio-culturelles, physiques et sportives ; minimum de 2."
+          id: "opht_b4_prevention_sante",
+          label: "Actions de prévention en santé physique et mentale",
+          hint: "Actions en santé environnementale ou nutritionnelle, activités socio-culturelles, physiques et sportives ; minimum de 2 actions prévues par le référentiel."
         },
         {
           id: "opht_b4_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS ou aux critères FSM, validée a priori ou a posteriori par le CS du CNP."
+          hint: "Action conforme à une fiche méthode HAS ou aux critères d’éligibilité de la FSM, évaluée et validée a priori ou a posteriori par le conseil scientifique du CNPO-AFO."
         }
       ]
     }
@@ -3442,7 +3724,7 @@
 //pediatrie
 {
   id: "pediatrie",
-  label: "Pédiatrie",
+  label: "Pédiatre",
   fullTitle: "Certification Périodique du Pédiatre",
   subtitle: "Spécialité : pédiatrie",
   icon: "🧸",
@@ -3459,127 +3741,198 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation pédiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation validées au titre du DPC et ayant pour cible les pédiatres",
-        "Actions de formation à caractère scientifique ou professionnel",
-        "Participation à des congrès / journées scientifiques",
-        "Formations diplômantes ou certifiantes (DU, DIU, Master…)",
-        "Activités d’enseignement",
-        "Recherche",
-        "Formation à la maîtrise de stage",
-        "Publications",
+        "Actions de formation à caractère scientifique ou professionnel dispensées par des organismes de formation labellisés Qualiopi ou par des structures figurant sur la liste publique des organismes de formation",
+        "Actions de formation dans le cadre de la complétion d’une démarche d’accréditation",
+        "Formations diplômantes ou certifiantes organisées par les universités",
+        "Activités d’enseignement délivrées dans le cadre d’une université en formation initiale ou continue",
+        "Activités de recherche (participation à des études cliniques ou épidémiologiques institutionnelles)",
+        "Formation à la maîtrise de stage universitaire",
+        "Publications / livres / chapitres / ouvrages pédagogiques",
         "Participation à une activité éditoriale",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "ped_b1_dpc_faf",
-          label: "Formation DPC / FAF pour pédiatres",
-          hint: "2 actions DPC et/ou FAF sur 6 ans valident UNE action. Éligibilité de fait."
+          label: "Actions de formation DPC / FAF-PM à destination des pédiatres",
+          hint: "Formations cognitives et formations FAF-PM ; 2 actions DPC et/ou FAF en 6 ans pour valider UNE action ; éligibilité de fait."
         },
         {
           id: "ped_b1_formation_scientifique",
-          label: "Formation scientifique / professionnelle",
-          hint: "Actions dispensées par des organismes Qualiopi, structures référencées ou universités, en lien avec la pédiatrie."
+          label: "Formation scientifique ou professionnelle Qualiopi / liste publique",
+          hint: "Congrès de niveau national ou international, congrès ou journées de formation d’une association type FMC régionale ; participation comme apprenant ou formateur ; 3 journées minimum en 6 ans pour valider UNE action."
         },
         {
-          id: "ped_b1_congres",
-          label: "Congrès / journée scientifique de pédiatrie",
-          hint: "Participation à des congrès ou journées scientifiques de la spécialité, selon la liste et les attendus de l’annexe bloc 1."
+          id: "ped_b1_accreditation",
+          label: "Formation dans le cadre d’une démarche d’accréditation HAS",
+          hint: "Seuls les pédiatres réanimateurs sont concernés ; démarche poursuivie pendant la période de 6 ans ; validation de fait avec preuve HAS."
         },
         {
           id: "ped_b1_du_diu_master",
-          label: "DU / DIU / Master / formation certifiante",
-          hint: "Formations universitaires en lien avec la pédiatrie ou la santé de l’enfant."
+          label: "Formation diplômante ou certifiante universitaire",
+          hint: "Un DU ou DIU sur la période valide UNE action ; liste renvoyée vers les DU/DIU de santé de l’enfant validés par le CNP."
         },
         {
           id: "ped_b1_enseignement",
-          label: "Activité d’enseignement",
-          hint: "Cours universitaires, formations courtes, DU/DIU, Master, unités d’enseignement, direction de travaux, coordination de DES/FST/DIU, conception de programme DPC/FAF."
+          label: "Activité d’enseignement universitaire",
+          hint: "Activités d’enseignement délivrées dans le cadre d’une université, cours en formation courte, DU, DIU, Master 2, unité d’enseignement ; attendus du CNP : au minimum 6 heures d’enseignement sur la période."
+        },
+        {
+          id: "ped_b1_direction_travaux",
+          label: "Direction de travaux / coordination pédagogique",
+          hint: "Direction de thèse de doctorat en médecine, mémoire de DU, master ; coordination locale ou régionale du DES de Pédiatrie, FST, option ou DIU ; participation à des comités pédagogiques."
+        },
+        {
+          id: "ped_b1_programme_dpc_faf",
+          label: "Conception et mise en œuvre d’un programme DPC ou FAF-PM",
+          hint: "Action explicitement listée dans l’annexe des activités d’enseignement."
         },
         {
           id: "ped_b1_recherche",
-          label: "Recherche clinique ou fondamentale",
-          hint: "Conception d’un projet présenté à appel d’offre, participation à un projet, ou rôle d’investigateur dans un essai clinique."
+          label: "Activités de recherche clinique ou fondamentale",
+          hint: "Conception d’un projet présenté à un appel d’offre, participation comme partenaire à un projet de recherche ou rôle d’investigateur dans un essai clinique."
         },
         {
           id: "ped_b1_msu",
-          label: "Maîtrise de stage universitaire",
-          hint: "Formation à la maîtrise de stage ou encadrement universitaire en lien avec la pédiatrie."
+          label: "Formation à la maîtrise de stage universitaire",
+          hint: "Formation agréée par l’ANDPC ; validation de fait."
         },
         {
           id: "ped_b1_publications",
-          label: "Publication / ouvrage / chapitre",
-          hint: "Publication dans des revues référencées à comité de lecture, revues médicales, livres consacrés à la pédiatrie ou à la santé de l’enfant."
+          label: "Publications / ouvrages / chapitres",
+          hint: "Publication dans des revues référencées à comité de lecture indépendant ou dans des revues médicales ; publication de livres consacrés à la pédiatrie ou à la santé de l’enfant ; participation à la rédaction de chapitres ou d’ouvrages pédagogiques."
         },
         {
           id: "ped_b1_editorial",
-          label: "Activité éditoriale",
-          hint: "Participation à une revue indexée ou avec comité de lecture dans le champ de la pédiatrie/santé de l’enfant."
+          label: "Participation à une activité éditoriale",
+          hint: "Participation éditoriale en lien avec la pédiatrie ou la santé de l’enfant."
+        },
+        {
+          id: "ped_b1_congres_eap",
+          label: "Congrès de l’European Academy of Paediatrics (EAP)",
+          hint: "Exemple explicite de congrès international validé en annexe."
+        },
+        {
+          id: "ped_b1_congres_espid",
+          label: "Congrès de l’European Society for Paediatric Infectious Diseases (ESPID)",
+          hint: "Exemple explicite de congrès international validé en annexe."
+        },
+        {
+          id: "ped_b1_congres_espghan",
+          label: "Congrès de l’European Society for Paediatric Gastroenterology, Hepatology and Nutrition (ESPGHAN)",
+          hint: "Exemple explicite de congrès international validé en annexe."
+        },
+        {
+          id: "ped_b1_congres_sfpeda",
+          label: "Congrès de la Société Française de Psychiatrie de l’Enfant et de l’Adolescent (SFPEDA)",
+          hint: "Exemple explicite de congrès consacré à la santé mentale de l’enfant."
+        },
+        {
+          id: "ped_b1_congres_tdah",
+          label: "Congrès de la Société Française du TDAH",
+          hint: "Exemple explicite de congrès national de spécialité."
+        },
+        {
+          id: "ped_b1_congres_pmi",
+          label: "Colloque National Annuel du Syndicat des Médecins de PMI",
+          hint: "Exemple explicite de formation nationale listée en annexe."
+        },
+        {
+          id: "ped_b1_congres_fcpc",
+          label: "Congrès de la Filiale de Cardiologie Pédiatrique et Congénitale (FCPC/SFC)",
+          hint: "Exemple explicite de congrès national de surspécialité."
+        },
+        {
+          id: "ped_b1_congres_gfhgnp",
+          label: "Congrès du Groupe Francophone d’Hépatologie-Gastroentérologie et Nutrition Pédiatrique (GFHGNP)",
+          hint: "Exemple explicite de congrès national de surspécialité."
+        },
+        {
+          id: "ped_b1_congres_sp2a",
+          label: "Congrès de Pneumologie et d’Allergologie Pédiatrique (SP2A)",
+          hint: "Exemple explicite de congrès national de surspécialité."
+        },
+        {
+          id: "ped_b1_journees_reseaux",
+          label: "Journées de formation de réseaux ou filières pédiatriques",
+          hint: "Journées avec numéro de formateur ou validation Qualiopi organisées par les réseaux de périnatalité, les réseaux de suivi des nouveau-nés vulnérables ou des troubles des apprentissages."
         },
         {
           id: "ped_b1_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action en lien avec la pédiatrie et/ou l’exercice professionnel, proposée a priori ou a posteriori, avec programme écrit, nombre d’heures et justificatif de présence."
+          hint: "Le pédiatre peut proposer une action au CNP, a priori ou a posteriori, avec programme écrit, nombre d’heures et justificatif de présence."
         }
       ]
     },
     {
       id: "bloc2",
       label: "Bloc 2",
-      shortLabel: "Qualité des pratiques",
+      shortLabel: "Qualité des pratiques et des soins",
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation pédiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Participation régulière à un registre de pratiques",
         "Actions d’analyse de pratiques et de gestion des risques ou programmes intégrés au titre du DPC publiées par l’ANDPC",
-        "Actions d’analyse et d’amélioration des pratiques / gestion des risques dispensées par organismes Qualiopi ou structures référencées",
+        "Actions d’analyse et d’amélioration des pratiques / gestion des risques dispensées par des organismes de formation labellisés Qualiopi ou par des structures figurant sur la liste publique des organismes de formation",
         "Actions d’amélioration des pratiques organisées au sein des établissements de santé",
         "Gestion des risques en équipe",
         "Actions d’amélioration des pratiques : missions d’expertise, participation à des recommandations",
         "Encadrement de stages / tutorat",
         "Participation à des groupes qualité / réseaux / démarches institutionnelles",
-        "Accréditation",
-        "Action hors liste"
+        "Accréditation / participation via le SIAM",
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "ped_b2_registre",
-          label: "Registre de pratiques",
-          hint: "Pas de nombre minimum de patients exigé ; la participation à ces registres peut être très chronophage, même avec un faible nombre d’inclusions."
+          label: "Participation régulière à un registre de pratiques",
+          hint: "Pas de nombre minimum de patients exigé ; le référentiel précise que la participation à ces registres peut être très chronophage même avec un faible nombre d’inclusions."
         },
         {
           id: "ped_b2_dpc_epp",
-          label: "EPP / gestion des risques DPC",
+          label: "Action d’analyse de pratiques / gestion des risques / programme intégré DPC",
           hint: "Un programme publié par l’ANDPC sur la période de 6 ans valide UNE action."
         },
         {
           id: "ped_b2_qualiopi_epp",
-          label: "Analyse de pratiques / gestion des risques Qualiopi",
-          hint: "Un programme sur 6 ans valide UNE action. Éligibilité de fait lorsqu’il répond à une fiche méthode HAS."
+          label: "Action d’analyse et d’amélioration des pratiques / gestion des risques par organisme Qualiopi",
+          hint: "Un programme sur 6 ans valide UNE action ; éligibilité de fait lorsqu’il répond à une fiche méthode HAS."
         },
         {
           id: "ped_b2_rmm_rcp_crex",
-          label: "RMM / RCP / CREX / actions d’établissement",
-          hint: "Actions individuelles reconnues au sein des établissements : revues de morbi-mortalité, réunions de concertation pluridisciplinaire, comités de retour d’expérience."
+          label: "Actions d’amélioration des pratiques organisées en établissement",
+          hint: "Exemples : RMM, RCP, CREX, actions individuelles reconnues au sein des établissements."
         },
         {
           id: "ped_b2_gestion_risques_equipe",
           label: "Gestion des risques en équipe",
-          hint: "Analyse des parcours de soins, coordination des soins, protocoles pluriprofessionnels, exercice coordonné, périnatalité, suivi des enfants vulnérables, TND, etc."
+          hint: "Analyse des parcours de soins, coordination des soins, protocoles pluriprofessionnels, exercice coordonné, périnatalité, suivi des enfants vulnérables, troubles du neurodéveloppement, etc."
         },
         {
           id: "ped_b2_expertise_recommandations",
-          label: "Expertise / recommandations / groupes de travail",
+          label: "Missions d’expertise / participation à des recommandations",
           hint: "Participation à des groupes de travail organisés par les professions, le ministère ou des agences."
         },
         {
           id: "ped_b2_encadrement",
           label: "Encadrement de stages / tutorat",
           hint: "Encadrement et accompagnement dans le cadre de la formation des étudiants ou internes."
+        },
+        {
+          id: "ped_b2_groupes_qualite",
+          label: "Participation à des groupes qualité / réseaux / démarches institutionnelles",
+          hint: "Action structurée d’amélioration continue de la qualité des prises en charge pédiatriques."
         },
         {
           id: "ped_b2_accreditation",
@@ -3589,7 +3942,7 @@
         {
           id: "ped_b2_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action évaluée et validée par le CNP selon les conditions de l’annexe 2.13."
+          hint: "Action évaluée et validée par le CNP selon les conditions de l’annexe bloc 2."
         }
       ]
     },
@@ -3600,7 +3953,10 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation pédiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Formation diplômante / certifiante / continue / DPC sur la relation avec l’enfant et sa famille",
         "Démarche PROMs et/ou PREMs",
@@ -3610,64 +3966,67 @@
         "Participation à des associations / projets avec les familles",
         "Actions de promotion de la santé environnementale et de l’éco-soin",
         "Participation à un comité d’éthique",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "ped_b3_formation_relation",
-          label: "Formation relation enfant-famille / patient",
-          hint: "Thèmes : accompagnement de l’enfant/adolescent et de sa famille, annonce diagnostique ou d’EIG, handicap/TND, violences faites aux enfants, douleur, ETP, deuil, soins palliatifs, droits des patients, bientraitance."
+          label: "Formation diplômante / certifiante / continue / DPC sur la relation avec l’enfant et sa famille",
+          hint: "Thèmes cités dans le référentiel : accompagnement de l’enfant/adolescent et de sa famille, annonce diagnostique ou d’EIG, handicap/TND, violences faites aux enfants, douleur, éducation thérapeutique, deuil, soins palliatifs, droits des patients, bientraitance."
         },
         {
           id: "ped_b3_proms_prems",
           label: "Démarche PROMs / PREMs",
-          hint: "Réalisation d’un cycle d’étude sur au moins une catégorie de patients/usagers, avec synthèse et plan d’action d’amélioration."
+          hint: "Réalisation d’un cycle d’étude sur au moins une catégorie de patients/usagers, avec synthèse des résultats et plan d’action d’amélioration."
         },
         {
           id: "ped_b3_registre",
-          label: "Registre / observatoire / base de données",
-          hint: "Participation régulière à un registre de pratiques intégrant les attendus du CNP de pédiatrie."
+          label: "Participation régulière à un registre / observatoire / base de données",
+          hint: "Registre de pratiques ou base de données intégrant les attendus du CNP de Pédiatrie."
         },
         {
           id: "ped_b3_prevention_etp_mediation",
-          label: "Prévention / ETP / médiation / parcours de soins",
-          hint: "Actions dans une structure ou un dispositif d’exercice coordonné : sensibilisation, éducation thérapeutique, fiches d’information, enquêtes de satisfaction, projets d’amélioration de parcours."
+          label: "Prévention / éducation thérapeutique / médiation / parcours de soins",
+          hint: "Actions dans une structure ou un dispositif d’exercice coordonné : sensibilisation, ETP, fiches d’information, enquêtes de satisfaction, projets d’amélioration de parcours."
         },
         {
           id: "ped_b3_patients_traceurs",
           label: "Patients traceurs",
-          hint: "Action reconnue par le référentiel, avec renvoi explicite à la méthode patient traceur HAS."
+          hint: "Action explicitement reconnue par le référentiel, avec renvoi à la méthode HAS."
         },
         {
           id: "ped_b3_associations_familles",
-          label: "Action avec associations / familles",
-          hint: "Participation à des actions menées avec les familles ou les associations d’usagers, selon les annexes du bloc 3."
+          label: "Participation à des associations / projets avec les familles",
+          hint: "Participation à des actions menées avec les familles ou les associations d’usagers, dans le champ de la pédiatrie."
         },
         {
           id: "ped_b3_ecosoins",
-          label: "Promotion de la santé environnementale / éco-soins",
-          hint: "Développement des compétences en promotion de la santé environnementale et en éco-responsabilité."
+          label: "Promotion de la santé environnementale et de l’éco-soin",
+          hint: "Développement de compétences en promotion de la santé environnementale et en éco-responsabilité."
         },
         {
           id: "ped_b3_ethique",
           label: "Participation à un comité d’éthique",
-          hint: "Action explicitement prévue au bloc 3, à évaluer/valider par le CNP."
+          hint: "Action explicitement prévue dans le bloc 3 du référentiel pédiatrie."
         },
         {
           id: "ped_b3_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action évaluée/validée par le CNP selon les conditions de l’annexe 3.10."
+          hint: "Action évaluée / validée par le CNP selon les conditions de l’annexe du bloc 3."
         }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé personnelle",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation pédiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Formation diplômante / certifiante / continue / DPC sur la santé personnelle",
         "Auto-évaluation de son état de santé et de son suivi",
@@ -3680,48 +4039,48 @@
         "Dépistages recommandés",
         "Action caritative / engagement associatif",
         "Participation à une association professionnelle",
-        "Action hors liste"
+        "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "ped_b4_formation_sante",
-          label: "Formation santé personnelle / qualité de vie au travail",
-          hint: "Thèmes : santé personnelle, QVT, déchets, AES, violences sexistes et sexuelles, violences aux soignants, ergonomie, risques professionnels, violence entre soignants/étudiants, analyse des pratiques."
+          label: "Formation diplômante / certifiante / continue / DPC sur la santé personnelle",
+          hint: "Thèmes cités dans le référentiel : santé personnelle, qualité de vie au travail, déchets, AES, violences sexistes et sexuelles, violences aux soignants, ergonomie, risques professionnels, violences entre soignants/étudiants, analyse des pratiques."
         },
         {
           id: "ped_b4_autoevaluation",
-          label: "Auto-évaluation de son état de santé",
-          hint: "Renseignement de 2 questionnaires sur la période de 6 ans ; questionnaires et outils proposés en annexe 4.2."
+          label: "Auto-évaluation de son état de santé et de son suivi",
+          hint: "Renseignement de 2 questionnaires sur la période de 6 ans ; questionnaires et outils proposés en annexe."
         },
         {
           id: "ped_b4_medecin_traitant",
-          label: "Médecin traitant",
-          hint: "Avoir un médecin traitant, hors auto-déclaration ou parent au 1er degré, et l’avoir consulté pendant la période de certification."
+          label: "Avoir un médecin traitant et l’avoir consulté pendant la période",
+          hint: "Hors auto-déclaration ou parent au 1er degré."
         },
         {
           id: "ped_b4_groupes_pairs",
-          label: "Groupe d’échange / analyse entre pairs",
+          label: "Participation à un groupe d’échange et d’analyse entre pairs",
           hint: "Action orientée santé du professionnel et soutien entre pairs."
         },
         {
           id: "ped_b4_prevention",
-          label: "Prévention en santé",
-          hint: "Actions de prévention et de maintien de la santé du professionnel."
+          label: "Action de prévention en santé",
+          hint: "Action de prévention et de maintien de la santé du professionnel."
         },
         {
           id: "ped_b4_pratique_sportive_culturelle",
           label: "Pratique sportive et/ou culturelle",
-          hint: "Action de prévention reconnue par le référentiel dans les annexes du bloc 4."
+          hint: "Action de prévention reconnue dans les annexes du bloc 4."
         },
         {
           id: "ped_b4_reseau_confraternel",
-          label: "Réseau confraternel / soutien collectif",
+          label: "Participation à un réseau confraternel",
           hint: "Participation à un réseau ou à une dynamique confraternelle favorisant la santé du professionnel."
         },
         {
           id: "ped_b4_vaccinations",
-          label: "Vaccinations recommandées à jour",
-          hint: "Maintien et mise à jour des vaccinations recommandées."
+          label: "Mise à jour des vaccinations recommandées",
+          hint: "Maintien et mise à jour des vaccinations recommandées pour le professionnel de santé."
         },
         {
           id: "ped_b4_depistages",
@@ -3730,18 +4089,18 @@
         },
         {
           id: "ped_b4_action_caritative",
-          label: "Action caritative / associative",
-          hint: "Exemples donnés en annexe : Pédiatres du Monde, Médecins du Monde, MSF, Croix-Rouge française, IPA, EAP, EAPS…"
+          label: "Action caritative / engagement associatif",
+          hint: "Exemples cités en annexe : Pédiatres du Monde, Médecins du Monde, Médecins Sans Frontières, Croix-Rouge française, IPA, EAP, EAPS."
         },
         {
           id: "ped_b4_association_professionnelle",
           label: "Participation à une association professionnelle",
-          hint: "Exemples d’annexe : SFP et sociétés filles, AFPA, syndicats, CNP de Pédiatrie…"
+          hint: "Exemples cités en annexe : SFP et sociétés filles, AFPA, syndicats, CNP de Pédiatrie."
         },
         {
           id: "ped_b4_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action en lien avec la pédiatrie et/ou l’exercice professionnel, avec programme écrit, nombre d’heures et attestation de présence."
+          hint: "Action en lien avec la pédiatrie et/ou l’exercice professionnel, proposée a priori ou a posteriori avec programme écrit, nombre d’heures et attestation de présence."
         }
       ]
     }
@@ -4109,10 +4468,13 @@
       colorClass: "bloc1",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation psychiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Actions de formation au titre du DPC publiées par l’ANDPC",
-        "Participation à un congrès de niveau national ou international, à une journée d’association régionale ou à une formation en ligne de type e-learning labellisé Qualiopi",
+        "Participation à un congrès de niveau national ou international, à une journée d’association régionale de formation ou à une formation en ligne de type e-learning labellisé Qualiopi",
         "Actions de formation à caractère scientifique ou professionnel dispensées par des organismes de formation labellisés Qualiopi ou par des structures figurant sur la liste publique des organismes de formation",
         "Formations diplômantes ou certifiantes organisées par les universités",
         "Activités d’enseignement délivrées dans le cadre d’une université",
@@ -4125,89 +4487,164 @@
         "Participation à des réunions formalisées de revue bibliographique",
         "Abonnement à une revue médicale avec test de lecture effectué et réussi",
         "Psychothérapie didactique personnelle par société reconnue",
-        "Participation à un programme intégré proposé par ODPC dans le cadre des Orientations Prioritaires",
+        "Participation à un programme intégré proposé par un ODPC dans le cadre des Orientations Prioritaires",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "psy_b1_dpc",
-          label: "Action de formation DPC publiée par l’ANDPC",
-          hint: "Participant auditeur ou formateur à l’intégralité d’une action de ce type ; 2 actions de ce type sur un cycle de 6 ans."
+          label: "Action de formation au titre du DPC publiée par l’ANDPC",
+          hint: "Participation à l’intégralité d’une action de ce type comme auditeur ou formateur ; 2 actions de ce type sur un cycle de 6 ans."
         },
         {
-          id: "psy_b1_congres",
+          id: "psy_b1_congres_formation",
           label: "Congrès national / international, journée régionale ou e-learning Qualiopi",
-          hint: "Participation comme auditeur ou formateur lors d’une session scientifique. Référentiel et liste indicative en annexe 4."
+          hint: "Participation à l’intégralité d’une action de ce type comme auditeur ou formateur ; le référentiel regroupe ici congrès, journées régionales et e-learning labellisé Qualiopi."
+        },
+        {
+          id: "psy_b1_congres_francais_psychiatrie",
+          label: "Congrès Français de Psychiatrie",
+          hint: "Congrès explicitement listé dans l’annexe 4 des formations validées par le CNPP."
+        },
+        {
+          id: "psy_b1_afpbn",
+          label: "Journées de l’Association Française de Psychiatrie Biologique et de Neuropsychopharmacologie (AFPBN)",
+          hint: "Formation explicitement listée dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_encephale",
+          label: "Congrès encéphale",
+          hint: "Congrès explicitement listé dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_geps",
+          label: "Congrès Groupement d’Étude et de Prévention du Suicide (GEPS)",
+          hint: "Congrès explicitement listé dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_information_psychiatrie",
+          label: "Journées de la Société de l’Information de psychiatrie",
+          hint: "Formation explicitement listée dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_sfpeada",
+          label: "Congrès de la Société Française de Psychiatrie de l’Enfant et de l’Adolescent et Disciplines Associées (SFPEADA)",
+          hint: "Congrès explicitement listé dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_cpnlf",
+          label: "Congrès de Psychiatrie et de Neurologie de Langue Française (CPNLF)",
+          hint: "Congrès explicitement listé dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_pedopsychiatrie",
+          label: "Journées de pédopsychiatrie et journées de psychiatrie adulte",
+          hint: "Formations explicitement listées dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_afpep_snpp",
+          label: "Journées nationales de l’AFPEP-SNPP",
+          hint: "Formations explicitement listées dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_ffp",
+          label: "Journées d’études de la Fédération Française de Psychiatrie (FFP)",
+          hint: "Formations explicitement listées dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_smp",
+          label: "Séminaires et journées de la Société Médico-Psychologique",
+          hint: "Formations explicitement listées dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_evolution_psychiatrique",
+          label: "Séminaires de la Société de l’Évolution Psychiatrique",
+          hint: "Formations explicitement listées dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_psychotherapie_institutionnelle",
+          label: "Journées et rencontres de psychothérapie institutionnelle",
+          hint: "Exemples listés en annexe 4 : Journée nationale de psychothérapie institutionnelle, Rencontres de Saint-Alban, Rencontres de la Criée, journée de psychothérapie institutionnelle à Landerneau, journées de l’Association méditerranéenne de psychothérapie institutionnelle."
+        },
+        {
+          id: "psy_b1_tdah",
+          label: "Journée annuelle de la Société Française du TDAH",
+          hint: "Formation explicitement listée dans l’annexe 4."
+        },
+        {
+          id: "psy_b1_afp_spf",
+          label: "Journées de séminaire et colloques de l’AFP / SPF",
+          hint: "Formations explicitement listées dans l’annexe 4."
         },
         {
           id: "psy_b1_formation_qualiopi",
-          label: "Formation scientifique ou professionnelle Qualiopi / liste publique",
-          hint: "Participation comme auditeur à l’intégralité d’une action ; minimum équivalent à 1 journée de 6 heures ; au moins 3 congrès différents sur 6 ans pour valider une action."
+          label: "Formation scientifique ou professionnelle par organisme Qualiopi / liste publique",
+          hint: "Participation à l’intégralité d’une action de ce type ; action scientifique ou professionnelle structurée."
         },
         {
-          id: "psy_b1_diu_du",
-          label: "Formation diplômante ou certifiante universitaire",
-          hint: "Participant auditeur ou formateur à l’intégralité d’une action de formation de ce type ; voir annexe 2."
+          id: "psy_b1_diplome_universitaire",
+          label: "Formation diplômante ou certifiante organisée par une université",
+          hint: "Le référentiel prévoit cette catégorie, mais l’annexe 2 des formations retenues par le CNP est indiquée “à venir”."
         },
         {
-          id: "psy_b1_enseignement_univ",
-          label: "Activités d’enseignement dans le cadre d’une université",
-          hint: "Minimum de 8 heures d’enseignement ou de formation par an durant au moins 2 ans."
+          id: "psy_b1_enseignement_universitaire",
+          label: "Activité d’enseignement délivrée dans le cadre d’une université",
+          hint: "Activité d’enseignement universitaire dans le champ de la psychiatrie."
         },
         {
           id: "psy_b1_enseignement_institutionnel",
           label: "Activité d’enseignement dans un cadre institutionnel défini",
-          hint: "1er cycle, 2e cycle, 3e cycle, enseignement professionnel ; minimum de 8 heures par an durant au moins 2 ans."
+          hint: "Activité d’enseignement hors université mais dans un cadre institutionnel formalisé."
         },
         {
           id: "psy_b1_recherche",
           label: "Activités de recherche",
-          hint: "Investigateur déclaré sur un protocole avec promoteur identifié ; participation à des études cliniques ou épidémiologiques institutionnelles dans une unité de recherche labellisée, une université ou un appel d’offre international, avec validation des Bonnes pratiques cliniques."
+          hint: "Activités de recherche dans le champ de la psychiatrie."
         },
         {
           id: "psy_b1_msu",
           label: "Maîtrise de stage universitaire",
-          hint: "Formations proposées par l’ANDPC, par une université ou par une URPS."
+          hint: "Formation ou activité relevant de la maîtrise de stage universitaire."
         },
         {
           id: "psy_b1_expertise",
           label: "Travaux d’expertise",
-          hint: "Travaux réalisés dans un cadre de traçabilité, de rigueur et d’indépendance, pour sociétés savantes, CNP, universités, CHU, HAS, ANSM, agences, associations européennes, etc."
+          hint: "Travaux réalisés dans un cadre de traçabilité, de rigueur et d’indépendance."
         },
         {
           id: "psy_b1_publication",
           label: "Publication / revue de lecture / commentaire d’article",
-          hint: "Publications dans le domaine de la psychiatrie dans des revues référencées à comité de lecture indépendant."
+          hint: "Publication dans une revue référencée à comité de lecture indépendant, ou activité de revue/commentaire d’article."
         },
         {
           id: "psy_b1_comite_editorial",
           label: "Participation effective au comité éditorial d’une revue scientifique",
-          hint: "Soit activité de rédacteur en chef ou adjoint, soit activité de révision d’au moins 1 article par an poursuivie pendant la période de 6 ans."
+          hint: "Participation effective à un comité éditorial de revue scientifique."
         },
         {
           id: "psy_b1_revue_biblio",
-          label: "Réunions formalisées de revue bibliographique",
-          hint: "Participation à au moins 6 réunions sur le cycle ; réunions conformes à la fiche méthode HAS."
+          label: "Participation à des réunions formalisées de revue bibliographique",
+          hint: "Réunions structurées de revue de la littérature."
         },
         {
           id: "psy_b1_test_lecture",
           label: "Abonnement à une revue médicale avec test de lecture réussi",
-          hint: "Validation sur réussite du test."
+          hint: "Abonnement à une revue médicale avec test de lecture effectué et réussi."
         },
         {
           id: "psy_b1_psychotherapie_didactique",
           label: "Psychothérapie didactique personnelle par société reconnue",
-          hint: "Réguler plus efficacement ses émotions, améliorer ses relations avec les autres, développer sa tolérance face aux difficultés et être plus conscient de ses pensées."
+          hint: "Action explicitement listée dans le bloc 1 du référentiel psychiatrie."
         },
         {
           id: "psy_b1_programme_integre",
-          label: "Programme intégré ODPC dans le cadre des Orientations Prioritaires",
-          hint: "Simulation en santé, analyse de cas cliniques, jeux pédagogiques de rôle type ECOS, Tests de Concordance de Scripts."
+          label: "Programme intégré proposé par un ODPC dans le cadre des Orientations Prioritaires",
+          hint: "Programme intégré ODPC relevant des orientations prioritaires de la spécialité."
         },
         {
           id: "psy_b1_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS, évaluée et validée a priori ou a posteriori par le CNP."
+          hint: "Action proposée par le psychiatre, évaluée a priori ou a posteriori par le CNP."
         }
       ]
     },
@@ -4218,7 +4655,10 @@
       colorClass: "bloc2",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation psychiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Participation à un groupe de pairs, supervision, intervision",
         "Participation régulière à un registre de pratiques",
@@ -4232,79 +4672,79 @@
         "Maîtrise de stage universitaire",
         "Actions d’amélioration des pratiques : missions d’expertise, participation à des recommandations",
         "Participation à une Commission Départementale des Soins Psychiatriques",
-        "Participation à un programme intégré proposé par ODPC dans le cadre des orientations prioritaires",
+        "Participation à un programme intégré proposé par un ODPC dans le cadre des orientations prioritaires",
         "Action hors liste validée par le CNP"
       ],
       actions: [
         {
           id: "psy_b2_groupes_pairs",
-          label: "Groupe de pairs / supervision / intervision",
-          hint: "Au moins 8 réunions sur un cycle d’un an."
+          label: "Participation à un groupe de pairs, supervision, intervision",
+          hint: "Groupes de pairs, supervision ou intervision dans une logique d’analyse de pratique."
         },
         {
           id: "psy_b2_registre",
           label: "Participation régulière à un registre de pratiques",
-          hint: "Conception d’un nouveau registre ou participation active durant la durée de vie du registre poursuivie pendant la période de 6 ans ; registre validé par le CNP en annexe 3."
+          hint: "Participation active à un registre de pratiques dans le champ de la psychiatrie."
         },
         {
           id: "psy_b2_dpc_epp",
-          label: "Analyse de pratiques / gestion des risques DPC",
-          hint: "Actions ou programmes intégrés publiés par l’ANDPC ; éligibilité de fait."
+          label: "Action d’analyse de pratiques / gestion des risques / programme intégré DPC",
+          hint: "Action publiée par l’ANDPC à destination des psychiatres."
         },
         {
           id: "psy_b2_qualiopi_epp",
-          label: "Analyse de pratiques / gestion des risques Qualiopi / liste publique",
-          hint: "Éligibilité de fait."
+          label: "Action d’analyse de pratiques / gestion des risques par organisme Qualiopi / liste publique",
+          hint: "Action structurée répondant aux attendus du référentiel et aux méthodes HAS."
         },
         {
-          id: "psy_b2_rmm_rcp_crex",
-          label: "Actions d’amélioration des pratiques en établissement",
-          hint: "RMM, RCP, CREX, etc. ; éligibilité de fait."
+          id: "psy_b2_amelioration_etablissement",
+          label: "Actions d’amélioration des pratiques organisées au sein des établissements de santé",
+          hint: "Action institutionnelle d’amélioration des pratiques en établissement."
         },
         {
           id: "psy_b2_exercice_coordonne",
           label: "Exercice coordonné et protocolisé d’une équipe pluri-professionnelle de soins en ambulatoire",
-          hint: "Participation active poursuivie pendant au moins 2 ans ; éligibilité de fait."
+          hint: "Action relevant de la coordination pluriprofessionnelle des parcours."
         },
         {
           id: "psy_b2_indicateurs",
           label: "Suivi d’indicateurs de qualité et de sécurité des soins",
-          hint: "Participation poursuivie pendant au moins 2 ans ; éligibilité de fait."
+          hint: "Suivi et amélioration d’indicateurs qualité / sécurité."
         },
         {
           id: "psy_b2_vigilance",
           label: "Participation à un réseau de vigilance",
-          hint: "Participation poursuivie pendant au moins 2 ans."
+          hint: "Participation à un réseau de vigilance dans le champ de la psychiatrie."
         },
         {
           id: "psy_b2_gestion_risques_equipe",
           label: "Gestion des risques en équipe",
-          hint: "Participation poursuivie pendant au moins 2 ans ; éligibilité de fait."
+          hint: "Analyse collective et amélioration de la sécurité des pratiques."
         },
         {
           id: "psy_b2_msu",
           label: "Maîtrise de stage universitaire",
-          hint: "Participation cumulée équivalente à 6 mois sur un cycle de certification ; formations proposées par l’ANDPC, l’Université ou une URPS."
+          hint: "Encadrement universitaire ou maîtrise de stage reconnue dans le bloc 2."
         },
         {
           id: "psy_b2_expertise_recommandations",
           label: "Missions d’expertise / participation à des recommandations",
-          hint: "Coordination de la recommandation ou participation comme expert à un groupe bibliographique, de rédaction ou de relecture."
+          hint: "Participation à des recommandations ou missions d’expertise."
         },
         {
           id: "psy_b2_cdsp",
           label: "Participation à une Commission Départementale des Soins Psychiatriques",
-          hint: "Coordination de la recommandation ou participation en tant qu’expert à un groupe de travail."
+          hint: "Action explicitement prévue par le référentiel psychiatrie."
         },
         {
           id: "psy_b2_programme_integre",
-          label: "Programme intégré ODPC dans le cadre des orientations prioritaires",
-          hint: "Analyse de situations cliniques, programme de simulation en santé, jeux pédagogiques de rôle type ECOS."
+          label: "Programme intégré proposé par un ODPC dans le cadre des orientations prioritaires",
+          hint: "Programme intégré ODPC relevant des orientations prioritaires de la spécialité."
         },
         {
           id: "psy_b2_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action conforme à une fiche méthode HAS, évaluée et validée a priori ou a posteriori par le CNP."
+          hint: "Action proposée par le psychiatre et validée par le CNP après analyse."
         }
       ]
     },
@@ -4315,7 +4755,10 @@
       colorClass: "bloc3",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation psychiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Suivre une formation qualifiante à la psychothérapie",
         "Assurer la supervision de psychothérapies",
@@ -4335,90 +4778,93 @@
       ],
       actions: [
         {
-          id: "psy_b3_psychotherapie",
+          id: "psy_b3_formation_psychotherapie",
           label: "Formation qualifiante à la psychothérapie",
-          hint: "Se former ou améliorer sa pratique psychothérapique."
+          hint: "Action explicitement prévue dans le bloc 3 pour améliorer la relation thérapeutique."
         },
         {
           id: "psy_b3_supervision_psychotherapies",
           label: "Supervision de psychothérapies",
-          hint: "Améliorer la qualité de la relation avec les patients et superviser les pratiques."
+          hint: "Assurer la supervision de psychothérapies."
         },
         {
           id: "psy_b3_annuaire_psychotherapeutes",
-          label: "Inscription à un annuaire ou à une société savante en psychothérapie",
-          hint: "Participation aux activités de la société."
+          label: "Inscription à un annuaire de psychothérapeutes ou d’une société savante en psychothérapie",
+          hint: "Inscription ou participation à une société savante en psychothérapie."
         },
         {
           id: "psy_b3_formation_relation",
           label: "Formation sur le thème de la relation au patient",
-          hint: "Soit action publiée par l’ANDPC à destination des psychiatres ; soit autre organisme avec minimum 3 journées de participation sur 6 ans."
+          hint: "Formation délivrée par un organisme Qualiopi, un ODPC ou une structure figurant sur la liste publique."
         },
         {
           id: "psy_b3_diplome_relation",
-          label: "Formation diplômante ou certifiante sur la relation au patient",
-          hint: "Liste des formations en annexe 2."
+          label: "Formation diplômante ou certifiante sur le thème de la relation au patient",
+          hint: "Formation universitaire ou certifiante dédiée à la relation patient."
         },
         {
           id: "psy_b3_associations_patients",
-          label: "Actions dans le cadre d’associations de patients",
-          hint: "Interventions lors de journées, fonctions exercées, actions de sensibilisation, fiches d’information, enquêtes de satisfaction ; minimum de 2 actions sur 6 ans."
+          label: "Actions réalisées dans le cadre d’associations de patients",
+          hint: "Le référentiel prévoit cette catégorie ; l’annexe 5 des associations agréées est indiquée “à venir”."
         },
         {
           id: "psy_b3_programmes_patients",
-          label: "Programmes associant des patients",
-          hint: "Élaboration d’un programme d’éducation thérapeutique (ETP) ou participation à 4 réunions d’un programme d’ETP pendant la période de 6 ans ; programme labellisé par une ARS."
+          label: "Conception et participation à la mise en place de programmes associant des patients",
+          hint: "Programme élaboré pour ou avec les patients."
         },
         {
           id: "psy_b3_travail_territorial",
           label: "Travaux avec association ad hoc et travail territorial",
-          hint: "Par une association reconnue d’utilité publique."
+          hint: "Action explicitement prévue dans le bloc 3."
         },
         {
           id: "psy_b3_patients_traceurs",
           label: "Patients traceurs",
-          hint: "Participation au processus ; éligibilité de fait."
+          hint: "Action relevant de la méthode patient traceur, centrée sur l’expérience et la relation patient."
         },
         {
           id: "psy_b3_dispositif_annonce",
           label: "Participation à un dispositif d’annonce",
-          hint: "Diagnostic d’un cancer, dommage associé aux soins, mauvaise nouvelle, maladie chronique ; faire bénéficier les patients des meilleures conditions possibles d’annonce du diagnostic et des traitements."
+          hint: "Action d’annonce / accompagnement du patient dans son parcours."
         },
         {
           id: "psy_b3_groupes_pairs_relation",
-          label: "Groupes d’échange et d’analyse entre pairs centrés sur la relation patient",
-          hint: "Travailler sur des situations cliniques devant et avec ses pairs, centrées sur la relation avec le patient ; 1 action sur un cycle de 6 ans."
+          label: "Participation à des groupes d’échange et d’analyse entre pairs centrés sur la relation avec le patient",
+          hint: "Travail entre pairs sur la relation avec le patient."
         },
         {
           id: "psy_b3_partage_interpro",
           label: "Partage d’expériences interprofessionnelles et bonnes pratiques",
-          hint: "Améliorer la prise en charge des patients vulnérables, de la fin de vie, et lutter contre l’inégalité d’accès aux soins et les discriminations ; participation à une ou plusieurs réunions totalisant au moins 8 heures sur le cycle de 6 ans."
+          hint: "Patients vulnérables, fin de vie, discriminations, inégalités d’accès aux soins."
         },
         {
           id: "psy_b3_vss",
           label: "Formation prévention violences sexistes et sexuelles",
-          hint: "Donne des outils pour agir de manière éthique, sécurisée et professionnelle ; levier de protection renforcée pour les patients."
+          hint: "Action explicitement prévue dans le bloc 3."
         },
         {
           id: "psy_b3_publics_specifiques",
           label: "Adaptation de la prise en charge aux publics spécifiques",
-          hint: "Handicaps, LGBTQI+, non-francophone, etc. ; repérage et prise en charge des patients victimes de violences."
+          hint: "Action explicitement prévue dans le bloc 3."
         },
         {
           id: "psy_b3_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action évaluée et validée a priori ou a posteriori par le CNP."
+          hint: "Action proposée par le psychiatre et validée par le CNP."
         }
       ]
     },
     {
       id: "bloc4",
       label: "Bloc 4",
-      shortLabel: "Santé personnelle",
+      shortLabel: "Santé personnelle du professionnel",
       colorClass: "bloc4",
       openByDefault: false,
       validationMode: "minimumDistinct",
-      minimumDistinctActions: 2,
+      ruleText: "Validation psychiatrie : 2 actions différentes minimum dans ce bloc.",
+      requirements: {
+        min: 2
+      },
       allReferentialActions: [
         "Médecin traitant",
         "Psychothérapie individuelle",
@@ -4437,42 +4883,42 @@
         {
           id: "psy_b4_medecin_traitant",
           label: "Médecin traitant",
-          hint: "Hors autodéclaration et l’avoir consulté au moins 3 fois pendant la période de certification."
+          hint: "Avoir un médecin traitant hors auto-déclaration."
         },
         {
           id: "psy_b4_psychotherapie_individuelle",
           label: "Psychothérapie individuelle",
-          hint: "Réguler plus efficacement ses émotions, améliorer ses relations avec les autres, développer sa tolérance face aux difficultés et être plus conscient de ses pensées."
+          hint: "Action explicitement prévue dans le bloc 4 du référentiel."
         },
         {
           id: "psy_b4_sport",
-          label: "Activité sportive régulière",
-          hint: "Activité sportive avec licence ou attestation."
+          label: "Activité sportive avec licence ou attestation",
+          hint: "Action de prévention listée dans le référentiel et l’annexe 7."
         },
         {
           id: "psy_b4_culture",
-          label: "Activité culturelle",
-          hint: "Activité culturelle régulière en tant qu’acteur ou spectateur : musique, théâtre, danse, etc."
+          label: "Activité culturelle en tant qu’acteur ou spectateur",
+          hint: "Action listée dans le référentiel ; l’annexe 7 précise les activités culturelles en tant qu’acteur."
         },
         {
           id: "psy_b4_souffrance_travail",
           label: "Sensibilisation à la souffrance au travail",
-          hint: "Repérage de sa propre souffrance au travail ou de celle des autres."
+          hint: "Action explicitement prévue dans le bloc 4."
         },
         {
           id: "psy_b4_groupes_pairs",
-          label: "Groupes d’échange et d’analyse entre pairs",
-          hint: "Permettent de travailler sur la santé personnelle du médecin ; 1 action sur un cycle de 6 ans."
+          label: "Participation à des groupes d’échange et d’analyse entre pairs",
+          hint: "Permettant de travailler sur la santé personnelle du médecin."
         },
         {
           id: "psy_b4_prevention_rps",
-          label: "Prévention en santé et gestion des risques psychosociaux",
-          hint: "Repérer et prévenir ses propres risques en santé et dangers psychosociaux ; voir annexe 7."
+          label: "Actions dans le domaine de la prévention en santé et la gestion des risques psychosociaux",
+          hint: "Le référentiel vise le repérage et la prévention de ses propres risques en santé et dangers psychosociaux ; renvoi explicite à l’annexe 7."
         },
         {
           id: "psy_b4_programme_integre",
-          label: "Programme intégré ODPC santé personnelle / relation patient / RPS",
-          hint: "Participant auditeur à l’intégralité d’une action de ce type ; 1 action sur un cycle de 6 ans."
+          label: "Programme intégré ODPC sur la relation patient, la santé personnelle ou les risques psychosociaux",
+          hint: "Participation à l’intégralité d’une action de ce type ; 1 action de ce type sur un cycle de 6 ans."
         },
         {
           id: "psy_b4_vss",
@@ -4481,8 +4927,8 @@
         },
         {
           id: "psy_b4_violences_soignants",
-          label: "Prévention des violences aux soignants",
-          hint: "Dans le cadre de la prise en charge des patients et de leurs proches ; identifier et réguler au mieux les violences dans le cadre professionnel."
+          label: "Prévention des violences aux soignants dans le cadre de la prise en charge des patients et de leurs proches",
+          hint: "Identifier et réguler au mieux les violences dans le cadre professionnel."
         },
         {
           id: "psy_b4_ergonomie",
@@ -4490,9 +4936,34 @@
           hint: "Identifier et réguler les atteintes possibles à la santé des praticiens."
         },
         {
+          id: "psy_b4_depistage_cancers",
+          label: "Participation aux actions nationales de dépistage organisé des cancers",
+          hint: "Selon sa situation de santé personnelle : cancer du sein, du côlon, du poumon ; action explicitement listée dans l’annexe 7."
+        },
+        {
+          id: "psy_b4_sante_nutritionnelle",
+          label: "Action en santé nutritionnelle",
+          hint: "Action explicitement listée dans l’annexe 7."
+        },
+        {
+          id: "psy_b4_conge_parental",
+          label: "Prise de congé parental",
+          hint: "Action explicitement listée dans l’annexe 7."
+        },
+        {
+          id: "psy_b4_conges_annuels",
+          label: "Prise d’au moins 5 semaines de congés pendant l’année",
+          hint: "Action explicitement listée dans l’annexe 7."
+        },
+        {
+          id: "psy_b4_caritatif",
+          label: "Participation à une activité caritative ou de coopération",
+          hint: "Action explicitement listée dans l’annexe 7."
+        },
+        {
           id: "psy_b4_hors_liste",
           label: "Action hors liste validée par le CNP",
-          hint: "Action évaluée et validée a priori ou a posteriori par le CNP."
+          hint: "Action proposée par le psychiatre, évaluée a priori ou a posteriori par le CNP."
         }
       ]
     }
